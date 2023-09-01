@@ -19,6 +19,10 @@
                 </ul>
             </p>
 
+            <br>
+            <p>Github: https://github.com/NdizeyeArmand/mijnBlog</p>
+            <p>Deze website is gemaakt door Armand-Gaël Ndizeye.</p>
+
         </div>
     </div>
 @endsection
