@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') . ' | ' . $post->title }}</title>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -50,7 +50,7 @@
                     class="md:hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     tabindex="-1"
                 >
-                    <li><a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</a></li>
+                    <li><a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Log in</a></li>
                     <li>
                         <a href="" class="flex items-center px-4 py-2 font-semibold text-sm text-indigo-700 hover:bg-gray-100">
                             Sign up
@@ -61,7 +61,7 @@
                     </li>
                 </ul>
                 <ul class="hidden md:flex space-x-12 font-semibold">
-                    <li><a href="">Login</a></li>
+                    <li><a href="">Log in</a></li>
                     <li>
                         <a href="" class="flex items-center group text-indigo-700">
                             Sign up
@@ -76,8 +76,6 @@
 
         <main class="mt-10 md:mt-12 lg:mt-16">
             <div class="space-y-10 md:space-y-16">
-
-            @foreach ($posts as $post)
                 
                 {{-- Start of blog post --}}
                 <article class="flex flex-col lg:flex-row pb-10 md:pb-16 border-b">
@@ -103,11 +101,8 @@
                     </div>
                 </article>
                 {{-- End of blog post --}}
-            @endforeach
 
             </div>
-            {{-- Pagination --}}
-            {{ $posts->links() }}
         </main>
     </div>
 </body>
