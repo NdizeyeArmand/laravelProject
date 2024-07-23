@@ -23,7 +23,10 @@ Route::get('/post', function(){
     return view('post');
 })->name('post');
 
-Route::get('/main', [MainController::class, 'index'])->name('main');
+Route::post('/set-theme', function (Request $request) {
+    $request->session()->put('darkMode', $request->input('darkMode'));
+    return response()->json(['success' => true]);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

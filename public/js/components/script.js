@@ -21,4 +21,39 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         scrollPos = currentTop;
     });
-})
+});
+
+function toggleTheme() {
+    const body = document.body;
+    const isDarkMode = body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+
+    fetch('/set-theme', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ darkMode: isDarkMode })
+    });
+    
+    const moonIcon = document.querySelector('.fa-moon');
+    const sunIcon = document.querySelector('.fa-sun');
+    
+    if (isDarkMode) {
+        moonIcon.classList.add('d-none');
+        sunIcon.classList.remove('d-none');
+    } else {
+        sunIcon.classList.add('d-none');
+        moonIcon.classList.remove('d-none');
+    }
+    
+    console.log('Dark mode is now:', isDarkMode);
+}
+
+// Apply dark mode on page load if it was previously set
+document.addEventListener('DOMContentLoaded', (event) => {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+});
