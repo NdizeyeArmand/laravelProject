@@ -9,7 +9,6 @@ window.addEventListener('DOMContentLoaded', () => {
             if (currentTop > 0 && mainNav.classList.contains('is-fixed')) {
                 mainNav.classList.add('is-visible');
             } else {
-                console.log(123);
                 mainNav.classList.remove('is-visible', 'is-fixed');
             }
         } else {
@@ -47,8 +46,6 @@ function toggleTheme() {
         sunIcon.classList.add('d-none');
         moonIcon.classList.remove('d-none');
     }
-    
-    console.log('Dark mode is now:', isDarkMode);
 }
 
 // Apply dark mode on page load if it was previously set
