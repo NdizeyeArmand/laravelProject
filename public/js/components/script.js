@@ -24,7 +24,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function toggleTheme() {
     const body = document.body;
+    const html = document.documentElement;
     const isDarkMode = body.classList.toggle('dark-mode');
+    html.classList.toggle('dark-mode', isDarkMode);
     localStorage.setItem('darkMode', isDarkMode);
 
     fetch('/set-theme', {
@@ -48,9 +50,9 @@ function toggleTheme() {
     }
 }
 
-// Apply dark mode on page load if it was previously set
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add('dark-mode');
         document.body.classList.add('dark-mode');
     }
 });

@@ -85,23 +85,81 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark-mode {
-  background-color: #333;
+body.dark-mode,
+.dark-mode html {
+  background-color: #444;
   color: #fff;
 }
 
+.dark-mode .container,
+.dark-mode .container-fluid,
+.dark-mode main,
+.dark-mode section,
+.dark-mode footer {
+    background-color: #444;
+}
+
+.dark-mode .post-preview,
+.dark-mode .page-item,
+.dark-mode .card,
+.dark-mode .list-group-item {
+    background-color: #444; /* slightly lighter than the main background */
+    color: #fff;
+}
+
+.dark-mode .masthead,
+.dark-mode [style*="background-image"] {
+    background-color: transparent !important;
+    position: relative;
+}
+
+.dark-mode .masthead::before,
+.dark-mode [style*="background-image"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Darkens the image */
+    z-index: 1;
+}
+
+.dark-mode .masthead > *,
+.dark-mode [style*="background-image"] > * {
+    position: relative;
+    z-index: 2;
+}
+
+.dark-mode .bg-white,
+.dark-mode .bg-light {
+    background-color: #444 !important;
+}
+
 .dark-mode .navbar {
-  background-color: #222 !important;
+  background-color: #444 !important;
+  border-bottom: none !important;
+}
+
+.dark-mode table,
+.dark-mode th,
+.dark-mode td {
+    background-color: #555;
+    color: #fff;
+    border-color: #777;
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: #555;
+    color: #fff;
+    border-color: #777;
 }
 
 .dark-mode .navbar-brand,
 .dark-mode .navbar-nav .nav-link {
   color: #fff !important;
-}
-
-/* Add styles for other elements */
-.dark-mode .container {
-  background-color: #444;
 }
 
 .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
@@ -10639,8 +10697,9 @@ blockquote {
 @media (min-width: 992px) {
   #mainNav {
     border-bottom: 1px solid transparent;
-    background: transparent;
+    background-color: transparent;
   }
+
   #mainNav .navbar-brand {
     color: #fff;
   }
@@ -10654,9 +10713,14 @@ blockquote {
     color: rgba(255, 255, 255, 0.8);
   }
 }
+.dark-mode header.masthead,
+.dark-mode header.masthead .container {
+  background-color: transparent !important;
+}
+
 @media (min-width: 992px) {
   #mainNav {
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
     /* Force Hardware Acceleration in WebKit */
     transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
@@ -10685,6 +10749,25 @@ blockquote {
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
     transform: translate3d(0, 100%, 0);
+  }
+  .dark-mode #mainNav.is-fixed {
+    position: fixed;
+    top: -83px;
+    transition: transform 0.2s;
+    background-color: rgba(68, 68, 68, 0.9) !important;
+    border-bottom: 1px solid #444;
+  }
+  .dark-mode #mainNav.is-fixed .navbar-brand,
+  .dark-mode #mainNav.is-fixed .navbar-nav .nav-link {
+      color: #fff;
+  }
+  .dark-mode #mainNav,
+  .dark-mode #mainNav * {
+    background-color: transparent !important;
+  }
+  .dark-mode header.masthead,
+  .dark-mode header.masthead .container {
+    background-color: transparent !important;
   }
 }
 
