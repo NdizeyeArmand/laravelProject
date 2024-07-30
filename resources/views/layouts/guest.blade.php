@@ -25,7 +25,6 @@
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{ asset('js/components/script.js') }}"></script>
     </head>
     <body class="@if(session('darkMode')) dark-mode @endif bg-white text-gray-900 transition-colors duration-300">
         @include('layouts.navigation')
@@ -75,10 +74,13 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2024</div>
+                        <div class="small text-center text-muted fst-italic">&copy; Your Website 2024</div>
                     </div>
                 </div>
             </div>
         </footer>
     </body>
+
+    <script src="{{ asset('js/components/script.js') }}"></script>
+    @yield('scripts')
 </html>

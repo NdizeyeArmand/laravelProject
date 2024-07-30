@@ -22,25 +22,11 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function toggleTheme() {
-    const body = document.body;
-    const html = document.documentElement;
-    const isDarkMode = body.classList.toggle('dark-mode');
-    html.classList.toggle('dark-mode', isDarkMode);
-    localStorage.setItem('darkMode', isDarkMode);
+function updateButtonState(isDarkMode) {
+    const button = document.getElementById('themeToggle');
+    const moonIcon = button.querySelector('.fa-moon');
+    const sunIcon = button.querySelector('.fa-sun');
 
-    fetch('/set-theme', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify({ darkMode: isDarkMode })
-    });
-    
-    const moonIcon = document.querySelector('.fa-moon');
-    const sunIcon = document.querySelector('.fa-sun');
-    
     if (isDarkMode) {
         moonIcon.classList.add('d-none');
         sunIcon.classList.remove('d-none');
@@ -50,9 +36,33 @@ function toggleTheme() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.documentElement.classList.add('dark-mode');
-        document.body.classList.add('dark-mode');
+function setDarkMode(isDarkMode) {
+    const body = document.body;
+    const html = document.documentElement;
+
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+        html.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+        html.classList.remove('dark-mode');
     }
+
+    localStorage.setItem('darkMode', isDarkMode.toString());
+    updateButtonState(isDarkMode);
+}
+
+function toggleTheme() {
+    const isDarkMode = !document.body.classList.contains('dark-mode');
+    setDarkMode(isDarkMode);
+}
+
+(function() {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(isDarkMode);
+})();
+
+document.addEventListener('DOMContentLoaded', function() {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(isDarkMode);
 });

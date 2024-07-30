@@ -138,7 +138,6 @@ body.dark-mode,
 
 .dark-mode .navbar {
   background-color: #444 !important;
-  border-bottom: none !important;
 }
 
 .dark-mode table,
@@ -3049,6 +3048,17 @@ textarea.form-control-lg {
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: #6c757d;
   --bs-gradient: none;
+}
+
+.dark-mode .btn-outline-secondary {
+  --bs-btn-color: #a1a8ae;
+  --bs-btn-border-color: #a1a8ae;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #d0d4d8;
+  --bs-btn-hover-border-color: #d0d4d8;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #d0d4d8;
+  --bs-btn-active-border-color: #d0d4d8;
 }
 
 .btn-outline-success {
@@ -10694,17 +10704,24 @@ blockquote {
   letter-spacing: 0.0625em;
   text-transform: uppercase;
 }
+.dark-mode header.masthead,
+.dark-mode header.masthead .container {
+  background-color: transparent !important;
+}
+
 @media (min-width: 992px) {
   #mainNav {
     border-bottom: 1px solid transparent;
     background-color: transparent;
   }
-
   #mainNav .navbar-brand {
     color: #fff;
   }
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.8);
+  }
+  .dark-mode #mainNav .navbar-brand:focus, .dark-mode #mainNav .navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link {
     color: #fff;
@@ -10712,10 +10729,9 @@ blockquote {
   #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
     color: rgba(255, 255, 255, 0.8);
   }
-}
-.dark-mode header.masthead,
-.dark-mode header.masthead .container {
-  background-color: transparent !important;
+  .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
 }
 
 @media (min-width: 992px) {
@@ -10740,11 +10756,17 @@ blockquote {
   #mainNav.is-fixed .navbar-brand:focus, #mainNav.is-fixed .navbar-brand:hover {
     color: #0085A1;
   }
+  .dark-mode #mainNav.is-fixed .navbar-brand:focus, .dark-mode #mainNav.is-fixed .navbar-brand:hover {
+    color: #0085A1 !important;;
+  }
   #mainNav.is-fixed .navbar-nav > li.nav-item > a {
     color: #212529;
   }
   #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
     color: #0085A1;
+  }
+  .dark-mode #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, .dark-mode #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
+    color: #0085A1 !important;
   }
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -10762,7 +10784,7 @@ blockquote {
       color: #fff;
   }
   .dark-mode #mainNav,
-  .dark-mode #mainNav * {
+  .dark-mode #mainNav *:not(.btn.btn-outline-secondary) {
     background-color: transparent !important;
   }
   .dark-mode header.masthead,
