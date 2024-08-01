@@ -1,0 +1,21 @@
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.dark-mode .btn-outline-secondary {
+    color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+    color: #343a40;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}

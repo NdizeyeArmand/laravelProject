@@ -79,8 +79,8 @@
                 </div>
             </div>
         </footer>
-    </body>
 
     <script src="{{ asset('js/components/script.js') }}"></script>
     @yield('scripts')
+    </body>
 </html>
