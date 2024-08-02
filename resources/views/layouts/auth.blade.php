@@ -24,41 +24,40 @@
         <link href="{{ asset('css/auth.css') }}" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body class="@if(session('darkMode')) dark-mode @endif bg-white text-gray-900 transition-colors duration-300">
-
-    <div class="container-fluid vh-100">
-        <div class="row h-100">
-            <!-- Left side - Image -->
-            <div class="col-md-6 p-0">
-                @yield('left-content')
-                <div class="h-100 bg-image" style="background-image: url('{{ asset('path/to/your/image.jpg') }}'); background-size: cover; background-position: center;"></div>
-            </div>
-
-            <!-- Vertical line -->
-            <div class="col-auto p-0">
-                <div class="vr h-100"></div>
-            </div>
-            
-            <!-- Right side - Login form -->
-            <div class="col-md-5 d-flex align-items-center justify-content-center">
-                <div class="w-100" style="max-width: 400px;">
-                    <!-- Go Back Home button -->
-                    <div class="text-end mb-4">
-                        <a href="{{ route('home') }}" class="btn btn-outline-secondary btn-sm">
-                            <i class="fas fa-home"></i> Go Back Home
-                        </a>
+        <div class="content-container">
+            <div class="container-fluid h-100">
+                <div class="row h-100">
+                    <!-- Left side - Image -->
+                    <div class="col-md-7 p-0 bg-image-container">
+                        <div class="h-100 bg-image d-flex align-items-center justify-content-center" style="background-image: url('{{ asset('../img/home/snow-effect-with-wallpaper.gif') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #f0f0f0;"></div>
                     </div>
 
-                    @yield('right-content')
+                    <!-- Vertical line -->
+                    <div class="col-auto p-0">
+                        <div class="vertical-line h-100"></div>
+                    </div>
+                    
+                    <!-- Right side - Login form -->
+                    <div class="col-md content-right d-flex align-items-center justify-content-center">
+                        <div class="w-100 scrollable-content" style="max-width: 400px;">
+                            <!-- Go Back Home button -->
+                            <div class="text-end mb-4">
+                                <a href="{{ route('home') }}" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-home"></i> Go Back Home
+                                </a>
+                            </div>
+
+                            @yield('right-content')
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="{{ asset('js/components/script.js') }}"></script>
+    <script src="{{ asset('js/components/auth-script.js') }}"></script>
     @yield('scripts')
     </body>
 </html>

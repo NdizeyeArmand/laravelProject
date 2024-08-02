@@ -2,10 +2,6 @@
 
 @section('full-title', 'Login')
 
-@section('left-content')
-    <div class="h-100 bg-image" style="background-image: url('{{ asset('../img/home/home-bg.jpg') }}'); background-size: cover; background-position: center;"></div>
-@endsection
-
 @section('right-content')
     <!-- Session Status -->
     @if (session('status'))

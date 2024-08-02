@@ -85,10 +85,31 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark-mode,
+body.dark-mode:not(.bg-image-container),
 .dark-mode html {
   background-color: #444;
   color: #fff;
+}
+
+.bg-image-container {
+  position: relative;
+  z-index: 1;
+  background-color: white !important;
+}
+
+.bg-image {
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: normal;
+}
+
+html.dark-mode .bg-image-container,
+body.dark-mode .bg-image-container,
+html.dark-mode .bg-image,
+body.dark-mode .bg-image {
+  filter: none !important;
+  opacity: 1 !important;
+  background-color: white !important;
 }
 
 .dark-mode .container,
@@ -103,32 +124,8 @@ body.dark-mode,
 .dark-mode .page-item,
 .dark-mode .card,
 .dark-mode .list-group-item {
-    background-color: #444; /* slightly lighter than the main background */
+    background-color: #444;
     color: #fff;
-}
-
-.dark-mode .masthead,
-.dark-mode [style*="background-image"] {
-    background-color: transparent !important;
-    position: relative;
-}
-
-.dark-mode .masthead::before,
-.dark-mode [style*="background-image"]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Darkens the image */
-    z-index: 1;
-}
-
-.dark-mode .masthead > *,
-.dark-mode [style*="background-image"] > * {
-    position: relative;
-    z-index: 2;
 }
 
 .dark-mode .bg-white,
@@ -10737,13 +10734,11 @@ blockquote {
 @media (min-width: 992px) {
   #mainNav {
     transition: background-color 0.2s ease, border-color 0.2s ease;
-    /* Force Hardware Acceleration in WebKit */
     transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
   #mainNav.is-fixed {
-    /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
     top: -83px;
     transition: transform 0.2s;
@@ -10769,7 +10764,6 @@ blockquote {
     color: #0085A1 !important;
   }
   #mainNav.is-visible {
-    /* if the user changes the scrolling direction, we show the header */
     transform: translate3d(0, 100%, 0);
   }
   .dark-mode #mainNav.is-fixed {

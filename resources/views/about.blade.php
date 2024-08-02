@@ -23,8 +23,7 @@
                     <li><a href="https://obsidian.md/blog/">{{ __('Obsidian official website') }}</a></li>
                     <li><a href="https://github.com/osmanaktrk/team2">{{ __('https://github.com/osmanaktrk/team2') }}</a></li>
                     <li><a href="https://github.com/tiretdubas/laravel_10_basics">{{ __('https://github.com/tiretdubas/laravel_10_basics') }}</a></li>
-                    <li><a href="https://obsidian.md/blog/">{{ __('Obsidian official website') }}</a></li>
-                    <li><a href="https://obsidian.md/blog/">{{ __('Obsidian official website') }}</a></li>
+                    <li><a href="https://github.com/samuelsong70/obsidian-dynamic-background">{{ __('samuelsong70 - Obsidian dynamic background image') }}</a></li>
                 </ul>
             </div>
         </div>
