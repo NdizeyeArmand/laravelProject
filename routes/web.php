@@ -28,6 +28,10 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

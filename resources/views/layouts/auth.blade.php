@@ -44,10 +44,13 @@
                     <div class="col-md content-right d-flex align-items-center justify-content-center">
                         <div class="w-100 scrollable-content" style="max-width: 400px;">
                             <!-- Go Back Home button -->
-                            <div class="text-end mb-4">
-                                <a href="{{ route('home') }}" class="btn btn-outline-secondary btn-sm">
-                                    <i class="fas fa-home"></i> Go Back Home
-                                </a>
+                            <div class="@yield('div-class')">
+                            @yield('return-button')
+                                <div>
+                                    <a href="{{ route('home') }}" class="btn btn-outline-secondary btn-sm">
+                                        <i class="fas fa-home"></i> {{ __('Go Back Home') }}
+                                    </a>
+                                </div>
                             </div>
 
                             @yield('right-content')

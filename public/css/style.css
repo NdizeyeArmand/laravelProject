@@ -2009,6 +2009,11 @@ progress {
   -webkit-overflow-scrolling: touch;
 }
 
+.invalid-feedback {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 @media (max-width: 575.98px) {
   .table-responsive-sm {
     overflow-x: auto;

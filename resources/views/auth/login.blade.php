@@ -2,33 +2,27 @@
 
 @section('full-title', 'Login')
 
-@section('right-content')
-    <!-- Session Status -->
-    @if (session('status'))
-        <div class="alert alert-info mb-4">
-            {{ session('status') }}
-        </div>
-    @endif
+@section('div-class', 'text-end mb-4')
 
+@section('right-content')
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        <!-- Session Status -->
+        <x-auth-session-status class="" :status="session('status')" />
+
         <!-- Email Address -->
         <div class="mb-3">
-            <label for="email" class="form-label">{{ __('Email') }}</label>
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
-            @error('email')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" type="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" />
         </div>
 
         <!-- Password -->
-        <div class="mb-3">
-            <label for="password" class="form-label">{{ __('Password') }}</label>
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-            @error('password')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        <div class="mb-3"> 
+            <x-input-label for="password" :value="__('Password')" />
+            <x-text-input id="password" type="password" class="{{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" required autocomplete="current-password" />
+            <x-input-error :messages="$errors->get('password')" />
         </div>
 
         <!-- Remember Me -->
@@ -44,9 +38,9 @@
                 </a>
             @endif
 
-            <button type="submit" class="btn btn-primary">
+            <x-primary-button>
                 {{ __('Log in') }}
-            </button>
+            </x-primary-button>
         </div>
     </form>
 @endsection
