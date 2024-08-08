@@ -1,21 +1,95 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
+@section('full-title', 'Dashboard')
+
+@section('content')
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <i class="bi bi-house-door"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-envelope"></i>
+                            Email & Password
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-box-arrow-right"></i>
+                            Sign out
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    <button id="theme-toggle" type="button" onclick="toggleTheme()">
-        Switch Theme
-    </button>  
-</x-app-layout>
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <!-- Top Section with Background Image -->
+            <div class="p-4 mb-4 bg-primary text-white rounded-3">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">{{ __('Welcome to Your Dashboard, ') . auth()->user()->name }}</h1>
+                    <p class="col-md-8 fs-4">You can contribute to the site by making posts.</p>
+                </div>
+            </div>
+
+            <!-- Bottom Section with Links -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Section 1</h2>
+                    <p>
+                        <a class="btn btn-secondary" href="#">View details &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Section 2</h2>
+                    <p>
+                        <a class="btn btn-secondary" href="#">View details &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Section 3</h2>
+                    <p>
+                        <a class="btn btn-secondary" href="#">View details &raquo;</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+@endsection
+
+@push('head')
+<style>
+    #mainNav {
+        position: relative;
+    }
+    #mainNav .navbar-brand,
+    #mainNav .navbar-nav > li.nav-item > a.nav-link {
+        color: #212529;
+    }
+    #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, 
+    #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
+    #mainNav.is-fixed .navbar-brand,
+    #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+        color: #0085A1;
+    }
+    .dark-mode #mainNav .navbar-brand:focus, .dark-mode #mainNav .navbar-brand:hover {
+        color: #0085A1 !important;
+    }
+    .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
+        color: #0085A1 !important;
+    }
+    .dark-mode .sidebar {
+        background-color: #343a40;
+    }
+</style>
+@endpush

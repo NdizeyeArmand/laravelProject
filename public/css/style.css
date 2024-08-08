@@ -134,7 +134,7 @@ body.dark-mode .bg-image {
 }
 
 .dark-mode .navbar {
-  background-color: #444 !important;
+    background-color: #444 !important;
 }
 
 .dark-mode table,
@@ -2320,7 +2320,7 @@ textarea.form-control-lg {
 .form-check-input:active {
   filter: brightness(90%);
 }
-.form-check-input:focus {
+.form-check-input:not([type="checkbox"]):focus {
   border-color: #80c2d0;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(0, 133, 161, 0.25);
@@ -10712,7 +10712,7 @@ blockquote {
 }
 
 @media (min-width: 992px) {
-  #mainNav {
+  body:not(.exception-page) #mainNav {
     border-bottom: 1px solid transparent;
     background-color: transparent;
   }
@@ -10777,10 +10777,6 @@ blockquote {
     transition: transform 0.2s;
     background-color: rgba(68, 68, 68, 0.9) !important;
     border-bottom: 1px solid #444;
-  }
-  .dark-mode #mainNav.is-fixed .navbar-brand,
-  .dark-mode #mainNav.is-fixed .navbar-nav .nav-link {
-      color: #fff;
   }
   .dark-mode #mainNav,
   .dark-mode #mainNav *:not(.btn.btn-outline-secondary) {

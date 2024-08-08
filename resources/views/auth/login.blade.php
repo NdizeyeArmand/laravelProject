@@ -31,7 +31,7 @@
             <label class="form-check-label" for="remember_me">{{ __('Remember me') }}</label>
         </div>
 
-        <div class="d-flex justify-content-end align-items-center">
+        <div class="d-flex justify-content-start align-items-center">
             @if (Route::has('password.request'))
                 <a class="text-decoration-none me-3" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
@@ -41,6 +41,11 @@
             <x-primary-button>
                 {{ __('Log in') }}
             </x-primary-button>
+        </div>
+        <div class="d-flex justify-content-start align-items-center">
+            <a class="text-decoration-none me-3" href="{{ route('register') }}">
+                {{ __('Not a member yet?') }}
+            </a>
         </div>
     </form>
 @endsection

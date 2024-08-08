@@ -4,8 +4,8 @@
 
 @section('header')
 <div class="site-heading">
-    <h1>{{ __('Clean Blog') }}</h1>
-    <span class="subheading">{{ __('A Blog Theme by Start Bootstrap') }}</span>
+    <h1>{{ __('Explore Obsidian') }}</h1>
+    <span class="subheading">{{ __('Discover the Best Note-Taking App') }}</span>
 </div>
 @endsection
 
