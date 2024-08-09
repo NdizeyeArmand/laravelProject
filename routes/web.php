@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +17,7 @@ Route::get('/post', function(){
     return view('post');
 })->name('post');
 
-Route::get('/FAQ', function(){
-    return view('FAQ');
-})->name('FAQ');
+Route::get('/FAQ', [FAQController::class, 'showFAQ'])->name('FAQ');
 
 Route::get('/contact', function () {
     return view('contact');

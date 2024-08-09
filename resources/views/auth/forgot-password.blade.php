@@ -7,7 +7,7 @@
 @section('return-button')
     <div>
         <a href="{{ route('login') }}" class="btn btn-outline-secondary btn-sm">
-            <i class="fas fa-arrow-left"></i> Return
+            <i class="fas fa-arrow-left"></i> {{ __('Return') }}
         </a>
     </div>
 @endsection

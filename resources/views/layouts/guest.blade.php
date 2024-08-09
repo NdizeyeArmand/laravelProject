@@ -74,7 +74,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="small text-center text-muted fst-italic">&copy; Your Website 2024</div>
+                        <div class="small text-center text-muted fst-italic">&copy; Explore Obsidian 2024</div>
                     </div>
                 </div>
             </div>

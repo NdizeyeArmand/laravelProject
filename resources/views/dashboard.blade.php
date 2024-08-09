@@ -6,25 +6,25 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Left Sidebar -->
-        <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
-                            <i class="bi bi-house-door"></i>
-                            Dashboard
+                            <i class="bi bi-house-door-fill"></i>
+                            {{ __('Dashboard') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="bi bi-envelope"></i>
-                            Email & Password
+                            <i class="bi bi-envelope-fill"></i>
+                            {{ __('Email & Password') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="bi bi-box-arrow-right"></i>
-                            Sign out
+                            {{ __('Sign out') }}
                         </a>
                     </li>
                 </ul>
@@ -71,6 +71,8 @@
 <style>
     #mainNav {
         position: relative;
+        border-bottom: 1px solid #dee2e6;
+        background-color: #fff;
     }
     #mainNav .navbar-brand,
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
@@ -88,8 +90,12 @@
     .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
         color: #0085A1 !important;
     }
-    .dark-mode .sidebar {
+    body.dark-mode .sidebar {
         background-color: #343a40;
+    }
+    body:not(.dark-mode) .sidebar {
+        --bs-bg-opacity: 1;
+        background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
     }
 </style>
 @endpush
