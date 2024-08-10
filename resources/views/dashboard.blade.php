@@ -16,7 +16,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('profile.edit') }}">
                             <i class="bi bi-envelope-fill"></i>
                             {{ __('Email & Password') }}
                         </a>

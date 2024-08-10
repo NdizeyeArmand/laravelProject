@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('full-title', 'Explore Obsidian')
+@section('full-title', 'Main')
 
 @section('header')
 <div class="site-heading">

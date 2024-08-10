@@ -1,0 +1,108 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
+class PostController extends Controller
+{
+    public function __construct()
+    {
+        // $this->middleware('auth')->except(['index', 'show']);
+    }
+
+    public function index()
+    {
+        $posts = Post::latest()->paginate(4);
+        return view('welcome', compact('posts'));
+    }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'subheading' => 'max:255',
+            'content' => 'required',
+            'cover_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $slug = Str::slug($post->title);
+        $count = 2;
+        while (Post::where('slug', $slug)->exists()) {
+            $slug = Str::slug($request->title) . '-' . $count;
+            $count++;
+        }
+
+        $post = new Post($validatedData);
+        $post->user_id = Auth::id();
+        $post->slug = $slug;
+
+
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('cover_images', 'public');
+            $post->cover_image = $path;
+        }
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post->slug)->with('success', 'Post created successfully.');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'subheading' => 'max:255',
+            'content' => 'required',
+            'cover_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $post->fill($validatedData);
+        $post->slug = Str::slug($post->title);
+
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('cover_images', 'public');
+            $post->cover_image = $path;
+        }
+
+        if ($request->title !== $post->title) {
+            $slug = Str::slug($request->title);
+            $count = 2;
+            while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
+                $slug = Str::slug($request->title) . '-' . $count;
+                $count++;
+            }
+            $post->slug = $slug;
+        }
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post->slug)->with('success', 'Post updated successfully.');
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('home')->with('success', 'Post deleted successfully.');
+    }
+}

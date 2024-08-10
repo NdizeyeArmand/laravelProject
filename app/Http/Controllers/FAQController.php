@@ -6,7 +6,7 @@ use App\Models\FaqItem;
 use App\Models\FaqCategory;
 use Illuminate\Http\Request;
 
-class FAQController  extends Controller
+class FAQController extends Controller
 {
     public function showFAQ()
     {
