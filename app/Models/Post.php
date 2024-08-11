@@ -24,6 +24,16 @@ class Post extends Model
         'published_at' => 'datetime',
     ];
 
+    public function scopeLatest($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    public function scopeOldest($query)
+    {
+        return $query->orderBy('published_at', 'asc');
+    }
+
     /*
     protected $attributes = [
         'cover_image' => 'img/Obsidian-image.jpg',

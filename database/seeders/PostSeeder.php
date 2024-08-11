@@ -41,14 +41,16 @@ class PostSeeder extends Seeder
 
             <p>As we embark on our note-taking journey, our perspective expands. Like the Earth diminishing in size as we move further away, our understanding deepens and broadens. We realize the vastness of knowledge and the infinite possibilities for growth and discovery.</p>
 
-            <a href=\"#!\"><img class=<\"img-fluid\" src=\"{{ asset('img/home/post-sample-image.jpg') }}\" alt=\"...\" /></a>
+            <a href=\"#!\"><img class=<\"img-fluid\" src=\"asset('img/home/post-sample-image.jpg')\" alt=\"...\" /></a>
 
-            <span class=\"caption text-muted\">{{ __('To go places and do things that have never been done before – that’s what living is all about.') }}</span>
+            <span class=\"caption text-muted\">To go places and do things that have never been done before – that’s what living is all about.</span>
 
             <p>Note-taking is our vessel for exploring the final frontier of knowledge. It allows us to boldly go where no one has gone before, uncovering new insights and pushing the boundaries of human understanding.</p>
 
             <p>As I stand here, surrounded by the wonders of the unknown, I realize that note-taking is the key to unlocking the secrets of the universe. It is through this practice of capturing and reflecting that we can truly explore the depths of our own potential and the mysteries of the world around us.</p>
         ";
+
+        $publishedAt = now()->subDays(0)->format('Y-m-d');
 
         Post::create([
             'user_id' => $user->id,
@@ -56,10 +58,12 @@ class PostSeeder extends Seeder
             'subheading' => 'Problems look mighty small from 150 miles up',
             'content' => $content,
             'cover_image' => 'img/home/post-sample-image.jpg',
-            'published_at' => '2023-08-24',
+            'published_at' => $publishedAt,
+            'created_at' => $publishedAt,
+            'updated_at' => $publishedAt,
         ]);
 
         // Create additional random posts
-        Post::factory(10)->create();
+        Post::factory(49)->create();
     }
 }

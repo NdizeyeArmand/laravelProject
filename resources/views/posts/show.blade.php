@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('title', '$post->title')
+@section('title', $post->title)
 
 @section('header-image', asset($post->cover_image))
 

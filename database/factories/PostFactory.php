@@ -17,13 +17,16 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $publishedAt = $this->faker->dateTimeThisYear();
         return [
             'user_id' => User::factory(),
-            'title' => $this->faker->sentence(),
+            'title' => rtrim($this->faker->sentence(), '.'),
             'subheading' => $this->faker->sentence(),
             'content' => $this->faker->paragraphs(6, true),
             'cover_image' => 'img/Obsidian-image.jpg',
-            'published_at' => $this->faker->dateTimeThisYear(),
+            'published_at' => $publishedAt,
+            'created_at' => $publishedAt,
+            'updated_at' => $publishedAt,
         ];
     }
 }

@@ -10,15 +10,74 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    public function __construct()
+    public function index(Request $request)
     {
-        // $this->middleware('auth')->except(['index', 'show']);
+        $posts = Post::latest()->take(4)->get();
+        return view('welcome', compact('posts'));
     }
 
-    public function index()
+    public function indexMain(Request $request)
     {
-        $posts = Post::latest()->paginate(4);
-        return view('welcome', compact('posts'));
+        $query = Post::query();
+
+        if ($request->has('q')) {
+            $searchTerm = $request->q;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('title', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('subheading', 'LIKE', "%{$searchTerm}%")
+                ->orWhereRaw("MATCH(title, subheading) AGAINST(? IN BOOLEAN MODE)", [$searchTerm]);
+            });
+        }
+
+        if ($request->has('sort')) {
+            switch ($request->sort) {
+                case 'recent':
+                    $query->orderBy('published_at', 'desc');
+                    break;
+                case 'oldest':
+                    $query->orderBy('published_at', 'asc');
+                    break;
+                case 'title':
+                    $query->orderBy('title');
+                    break;
+            }
+        }
+
+        $posts = $query->paginate(10);
+
+        return view('main', compact('posts'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = Post::query();
+
+        if ($request->has('q')) {
+            $searchTerm = $request->q;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('title', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('subheading', 'LIKE', "%{$searchTerm}%")
+                ->orWhereRaw("MATCH(title, subheading) AGAINST(? IN BOOLEAN MODE)", [$searchTerm]);
+            });
+        }
+
+        $sort = $request->input('sort', 'recent');
+
+        switch ($sort) {
+            case 'oldest':
+                $query->oldest();
+                break;
+            case 'title':
+                $query->orderBy('title');
+                break;
+            default:
+                $query->latest();
+                break;
+        }
+
+        $posts = $query->paginate(10);
+
+        return view('main', compact('posts'));
     }
 
     public function show(Post $post)
