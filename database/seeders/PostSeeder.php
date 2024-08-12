@@ -41,7 +41,7 @@ class PostSeeder extends Seeder
 
             <p>As we embark on our note-taking journey, our perspective expands. Like the Earth diminishing in size as we move further away, our understanding deepens and broadens. We realize the vastness of knowledge and the infinite possibilities for growth and discovery.</p>
 
-            <a href=\"#!\"><img class=<\"img-fluid\" src=\"asset('img/home/post-sample-image.jpg')\" alt=\"...\" /></a>
+            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/home/post-sample-image.jpg') . "\" alt=\"...\" /></a>
 
             <span class=\"caption text-muted\">To go places and do things that have never been done before – that’s what living is all about.</span>
 
