@@ -25,6 +25,7 @@
                     <li><a href="https://github.com/tiretdubas/laravel_10_basics">{{ __('https://github.com/tiretdubas/laravel_10_basics') }}</a></li>
                     <li><a href="https://github.com/samuelsong70/obsidian-dynamic-background">{{ __('samuelsong70 - Obsidian dynamic background image') }}</a></li>
                     <li><a href="https://www.originalmacguy.com/obsidian-the-good-the-bad-the-ugly/">{{ __('Original Mac Guy - Obsidian: The Good, The Bad, The Ugly') }}</a></li>
+                    <li><a href="https://jasinski.info/2023/02/23/obsidian-canvas-iphone-ipad/">{{ __('Jasinski.info - Obsidian Canvas for iPhone and iPad') }}</a></li>
                 </ul>
             </div>
         </div>

@@ -13,7 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        User::factory(50)->create();
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@ehb.be',
+            'password' => bcrypt('Password!321'),
+            'is_admin' => true,
+        ]);
         $this->call([
             PostSeeder::class,
             FaqCategorySeeder::class,

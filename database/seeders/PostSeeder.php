@@ -14,11 +14,151 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::factory()->create([
-            'name' => 'Start Bootstrap',
+        $content1 = "
+            <p>In the world of note-taking and personal knowledge management, Obsidian has emerged as a powerful tool for organizing thoughts and ideas. While the core app is free and feature-rich, there's one paid feature that stands out: Obsidian Sync. If you're an Obsidian user or considering diving into the app, here's why you should seriously consider trying Obsidian Sync.</p>
+
+            <h2 class=\"section-heading\">Seamless Cross-Device Synchronization</h2>
+            
+            <p>One of the primary benefits of Obsidian Sync is its ability to keep your notes synchronized across multiple devices effortlessly. Whether you're working on your desktop, laptop, tablet, or smartphone, your notes are always up-to-date. This seamless integration ensures that you have access to your latest thoughts and ideas, regardless of where you are or which device you're using.</p>
+
+            <h2 class=\"section-heading\">Enhanced Security and Privacy</h2>
+
+            <p>Unlike third-party sync solutions, Obsidian Sync offers end-to-end encryption for your data. This means that your notes are encrypted before they leave your device and can only be decrypted by you. For those who value privacy and security, especially when dealing with sensitive information, this feature alone makes Obsidian Sync worth considering.</p>
+
+            <blockquote class=\"blockquote\">Your thoughts are precious. Protect them with the same diligence you'd protect any other valuable asset.</blockquote>
+
+            <h2 class=\"section-heading\">Version History and Conflict Resolution</h2>
+
+            <p>Obsidian Sync maintains a version history of your notes, allowing you to revert to previous versions if needed. This feature is invaluable when you accidentally delete important information or want to track the evolution of your ideas over time. Additionally, the sync service handles conflict resolution smoothly, ensuring that you don't lose data when edits are made on different devices simultaneously.</p>
+
+            <h2 class=\"section-heading\">Selective Syncing</h2>
+
+            <p>Not all notes are created equal, and Obsidian Sync recognizes this. You have the flexibility to choose which vaults and folders to sync, allowing you to keep certain information local while sharing others across devices. This selective syncing capability helps you maintain control over your data and optimize storage usage.</p>
+
+            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/obsidian-sync-demo.jpg') . "\" alt=\"Obsidian Sync Demo\" /></a>
+            <span class=\"caption text-muted\">Obsidian Sync keeps your notes organized and accessible across all your devices.</span>
+
+            <h2 class=\"section-heading\">Support for Large Vaults</h2>
+
+            <p>For power users with extensive note collections, Obsidian Sync shines by efficiently handling large vaults. The service is optimized to sync even substantial amounts of data quickly and reliably, ensuring that your entire knowledge base remains accessible and up-to-date.</p>
+
+            <h2 class=\"section-heading\">Continuous Development and Support</h2>
+
+            <p>By subscribing to Obsidian Sync, you're not just getting a service; you're supporting the ongoing development of Obsidian. The team behind the app is constantly working on improvements and new features, many of which are driven by user feedback and needs.</p>
+
+            <p>In conclusion, while Obsidian is a fantastic tool on its own, Obsidian Sync elevates the experience to new heights. The peace of mind, convenience, and additional features it provides make it a worthwhile investment for anyone serious about their note-taking and personal knowledge management. Give Obsidian Sync a try, and you might find that it transforms the way you capture, organize, and access your ideas across all aspects of your life.</p>
+        ";
+
+        $publishedAt1 = '2023-12-16';
+
+        Post::create([
+            'user_id' => User::factory()->create()->id,
+            'title' => 'Taking notes with Obsidian',
+            'subheading' => 'A beginner\'s guide to the powerful note-taking app',
+            'content' => $content1,
+            'cover_image' => 'img/home/post-sample-image.jpg',
+            'published_at' => $publishedAt1,
+            'created_at' => $publishedAt1,
+            'updated_at' => $publishedAt1,
         ]);
 
-        $content = "
+        $content2 = "
+            <p>In the world of note-taking and personal knowledge management, Obsidian has emerged as a powerful tool for organizing thoughts and ideas. While the core app is free and feature-rich, there's one paid feature that stands out: Obsidian Sync. If you're an Obsidian user or considering diving into the app, here's why you should seriously consider trying Obsidian Sync.</p>
+
+            <h2 class=\"section-heading\">Seamless Cross-Device Synchronization</h2>
+            
+            <p>One of the primary benefits of Obsidian Sync is its ability to keep your notes synchronized across multiple devices effortlessly. Whether you're working on your desktop, laptop, tablet, or smartphone, your notes are always up-to-date. This seamless integration ensures that you have access to your latest thoughts and ideas, regardless of where you are or which device you're using.</p>
+
+            <h2 class=\"section-heading\">Enhanced Security and Privacy</h2>
+
+            <p>Unlike third-party sync solutions, Obsidian Sync offers end-to-end encryption for your data. This means that your notes are encrypted before they leave your device and can only be decrypted by you. For those who value privacy and security, especially when dealing with sensitive information, this feature alone makes Obsidian Sync worth considering.</p>
+
+            <blockquote class=\"blockquote\">Your thoughts are precious. Protect them with the same diligence you'd protect any other valuable asset.</blockquote>
+
+            <h2 class=\"section-heading\">Version History and Conflict Resolution</h2>
+
+            <p>Obsidian Sync maintains a version history of your notes, allowing you to revert to previous versions if needed. This feature is invaluable when you accidentally delete important information or want to track the evolution of your ideas over time. Additionally, the sync service handles conflict resolution smoothly, ensuring that you don't lose data when edits are made on different devices simultaneously.</p>
+
+            <h2 class=\"section-heading\">Selective Syncing</h2>
+
+            <p>Not all notes are created equal, and Obsidian Sync recognizes this. You have the flexibility to choose which vaults and folders to sync, allowing you to keep certain information local while sharing others across devices. This selective syncing capability helps you maintain control over your data and optimize storage usage.</p>
+
+            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/obsidian-sync-demo.jpg') . "\" alt=\"Obsidian Sync Demo\" /></a>
+            <span class=\"caption text-muted\">Obsidian Sync keeps your notes organized and accessible across all your devices.</span>
+
+            <h2 class=\"section-heading\">Support for Large Vaults</h2>
+
+            <p>For power users with extensive note collections, Obsidian Sync shines by efficiently handling large vaults. The service is optimized to sync even substantial amounts of data quickly and reliably, ensuring that your entire knowledge base remains accessible and up-to-date.</p>
+
+            <h2 class=\"section-heading\">Continuous Development and Support</h2>
+
+            <p>By subscribing to Obsidian Sync, you're not just getting a service; you're supporting the ongoing development of Obsidian. The team behind the app is constantly working on improvements and new features, many of which are driven by user feedback and needs.</p>
+
+            <p>In conclusion, while Obsidian is a fantastic tool on its own, Obsidian Sync elevates the experience to new heights. The peace of mind, convenience, and additional features it provides make it a worthwhile investment for anyone serious about their note-taking and personal knowledge management. Give Obsidian Sync a try, and you might find that it transforms the way you capture, organize, and access your ideas across all aspects of your life.</p>
+        ";
+
+        $publishedAt2 = now()->subDays(0)->format('Y-m-d');
+
+        Post::create([
+            'user_id' => User::factory()->create()->id,
+            'title' => 'Must-have Obsidian plugins - 2024 edition',
+            'subheading' => 'Level up your note-taking with these built-in and community plugins',
+            'content' => $content2,
+            'cover_image' => 'img/home/post-sample-image.jpg',
+            'published_at' => $publishedAt2,
+            'created_at' => $publishedAt2,
+            'updated_at' => $publishedAt2,
+        ]);
+
+        $content3 = "
+            <p>In the world of note-taking and personal knowledge management, Obsidian has emerged as a powerful tool for organizing thoughts and ideas. While the core app is free and feature-rich, there's one paid feature that stands out: Obsidian Sync. If you're an Obsidian user or considering diving into the app, here's why you should seriously consider trying Obsidian Sync.</p>
+
+            <h2 class=\"section-heading\">Seamless Cross-Device Synchronization</h2>
+            
+            <p>One of the primary benefits of Obsidian Sync is its ability to keep your notes synchronized across multiple devices effortlessly. Whether you're working on your desktop, laptop, tablet, or smartphone, your notes are always up-to-date. This seamless integration ensures that you have access to your latest thoughts and ideas, regardless of where you are or which device you're using.</p>
+
+            <h2 class=\"section-heading\">Enhanced Security and Privacy</h2>
+
+            <p>Unlike third-party sync solutions, Obsidian Sync offers end-to-end encryption for your data. This means that your notes are encrypted before they leave your device and can only be decrypted by you. For those who value privacy and security, especially when dealing with sensitive information, this feature alone makes Obsidian Sync worth considering.</p>
+
+            <blockquote class=\"blockquote\">Your thoughts are precious. Protect them with the same diligence you'd protect any other valuable asset.</blockquote>
+
+            <h2 class=\"section-heading\">Version History and Conflict Resolution</h2>
+
+            <p>Obsidian Sync maintains a version history of your notes, allowing you to revert to previous versions if needed. This feature is invaluable when you accidentally delete important information or want to track the evolution of your ideas over time. Additionally, the sync service handles conflict resolution smoothly, ensuring that you don't lose data when edits are made on different devices simultaneously.</p>
+
+            <h2 class=\"section-heading\">Selective Syncing</h2>
+
+            <p>Not all notes are created equal, and Obsidian Sync recognizes this. You have the flexibility to choose which vaults and folders to sync, allowing you to keep certain information local while sharing others across devices. This selective syncing capability helps you maintain control over your data and optimize storage usage.</p>
+
+            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/obsidian-sync-demo.png') . "\" alt=\"Obsidian Sync Demo\" /></a>
+            <span class=\"caption text-muted\">Obsidian Sync keeps your notes organized and accessible across all your devices.</span>
+
+            <h2 class=\"section-heading\">Support for Large Vaults</h2>
+
+            <p>For power users with extensive note collections, Obsidian Sync shines by efficiently handling large vaults. The service is optimized to sync even substantial amounts of data quickly and reliably, ensuring that your entire knowledge base remains accessible and up-to-date.</p>
+
+            <h2 class=\"section-heading\">Continuous Development and Support</h2>
+
+            <p>By subscribing to Obsidian Sync, you're not just getting a service; you're supporting the ongoing development of Obsidian. The team behind the app is constantly working on improvements and new features, many of which are driven by user feedback and needs.</p>
+
+            <p>In conclusion, while Obsidian is a fantastic tool on its own, Obsidian Sync elevates the experience to new heights. The peace of mind, convenience, and additional features it provides make it a worthwhile investment for anyone serious about their note-taking and personal knowledge management. Give Obsidian Sync a try, and you might find that it transforms the way you capture, organize, and access your ideas across all aspects of your life.</p>
+        ";
+
+        $publishedAt3 = now()->subDays(0)->format('Y-m-d');
+
+        Post::create([
+            'user_id' => User::factory()->create()->id,
+            'title' => 'Why you should try Obsidian Sync',
+            'subheading' => 'The paid feature is well worth its price',
+            'content' => $content3,
+            'cover_image' => 'img/obsidian-sync-demo.png',
+            'published_at' => $publishedAt3,
+            'created_at' => $publishedAt3,
+            'updated_at' => $publishedAt3,
+        ]);
+
+        $content4 = "
             <p>Note-taking is a powerful tool for self-improvement. It allows us to capture our thoughts, ideas, and insights in a tangible form. By jotting down our observations and reflections, we can better understand ourselves and the world around us. Just like a compass guides a traveler, notes guide us on our journey of personal growth and development.</p>
 
             <p>Through note-taking, we can explore new ideas, analyze information, and make connections between different concepts.</p>
@@ -50,20 +190,20 @@ class PostSeeder extends Seeder
             <p>As I stand here, surrounded by the wonders of the unknown, I realize that note-taking is the key to unlocking the secrets of the universe. It is through this practice of capturing and reflecting that we can truly explore the depths of our own potential and the mysteries of the world around us.</p>
         ";
 
-        $publishedAt = now()->subDays(0)->format('Y-m-d');
+        $publishedAt4 = now()->subDays(1)->format('Y-m-d');
 
         Post::create([
-            'user_id' => $user->id,
+            'user_id' => User::factory()->create()->id,
             'title' => 'Man must explore, and this is exploration at its greatest',
             'subheading' => 'Problems look mighty small from 150 miles up',
-            'content' => $content,
+            'content' => $content4,
             'cover_image' => 'img/home/post-sample-image.jpg',
-            'published_at' => $publishedAt,
-            'created_at' => $publishedAt,
-            'updated_at' => $publishedAt,
+            'published_at' => $publishedAt4,
+            'created_at' => $publishedAt4,
+            'updated_at' => $publishedAt4,
         ]);
 
         // Create additional random posts
-        Post::factory(49)->create();
+        Post::factory(27)->create();
     }
 }

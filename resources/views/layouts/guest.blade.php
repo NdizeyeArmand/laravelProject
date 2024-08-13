@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="keywords" content="{{ __('Obsidian Notes Markdown Think studying') }}">
+        <meta name="keywords" content="{{ __('Obsidian Notes Markdown Think studying,obsidian.md,obsidian note taking,obsidian app,obsidian notes,obsidian note,obsidian review,obsidian tutorial,obsidian workflow,obsidian zettlekasten,how to use obsidian,note taking app,https://obsidian.md/index.html,sync obsidian,obsidian onedrive sync,obsidian sync pc with mobile,obsidian sync devices,obsidian sync,obsidian sync free,obsidian sync mobile,obsidian sync tutorial,obsidian sync guide,obsidian sync android,obsidian sync onedrive') }}">
         <meta name="author" content="Armand-Gaël Ndizeye" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
