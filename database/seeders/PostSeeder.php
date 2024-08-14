@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
@@ -51,10 +52,10 @@ class PostSeeder extends Seeder
 
         $publishedAt1 = '2023-12-16';
 
-        Post::create([
+        $post1 = Post::create([
             'user_id' => User::factory()->create()->id,
             'title' => 'Taking notes with Obsidian',
-            'subheading' => 'A beginner\'s guide to the powerful note-taking app',
+            'subheading' => 'A beginner\'s guide',
             'content' => $content1,
             'cover_image' => 'img/home/post-sample-image.jpg',
             'published_at' => $publishedAt1,
@@ -62,53 +63,63 @@ class PostSeeder extends Seeder
             'updated_at' => $publishedAt1,
         ]);
 
+        $tags1 = Tag::whereIn('name', ['Tutorial', 'Beginner'])->get();
+        foreach ($tags1 as $tag) {
+            $post1->tags()->attach($tag);
+        };
+
         $content2 = "
-            <p>In the world of note-taking and personal knowledge management, Obsidian has emerged as a powerful tool for organizing thoughts and ideas. While the core app is free and feature-rich, there's one paid feature that stands out: Obsidian Sync. If you're an Obsidian user or considering diving into the app, here's why you should seriously consider trying Obsidian Sync.</p>
+            <p>Obsidian, the powerful note-taking and knowledge management app, becomes even more versatile with its extensive plugin ecosystem. As we move through 2024, certain plugins have emerged as essential tools for maximizing productivity and enhancing the Obsidian experience. Here's our curated list of must-have Obsidian plugins for 2024.</p>
 
-            <h2 class=\"section-heading\">Seamless Cross-Device Synchronization</h2>
+            <h2 class=\"section-heading\">1. Dataview</h2>
             
-            <p>One of the primary benefits of Obsidian Sync is its ability to keep your notes synchronized across multiple devices effortlessly. Whether you're working on your desktop, laptop, tablet, or smartphone, your notes are always up-to-date. This seamless integration ensures that you have access to your latest thoughts and ideas, regardless of where you are or which device you're using.</p>
+            <p>Dataview remains a cornerstone plugin for Obsidian power users. It allows you to query and display data from your notes, creating dynamic views and automated summaries. Whether you're managing a project, tracking habits, or organizing research, Dataview turns your static notes into a powerful database.</p>
 
-            <h2 class=\"section-heading\">Enhanced Security and Privacy</h2>
+            <h2 class=\"section-heading\">2. Kanban</h2>
 
-            <p>Unlike third-party sync solutions, Obsidian Sync offers end-to-end encryption for your data. This means that your notes are encrypted before they leave your device and can only be decrypted by you. For those who value privacy and security, especially when dealing with sensitive information, this feature alone makes Obsidian Sync worth considering.</p>
+            <p>The Kanban plugin brings visual task management to Obsidian. It transforms your notes into customizable kanban boards, perfect for project management, workflow organization, or even as a writing tool. Its integration with Obsidian's linking system makes it a powerful addition to any workflow.</p>
 
-            <blockquote class=\"blockquote\">Your thoughts are precious. Protect them with the same diligence you'd protect any other valuable asset.</blockquote>
+            <blockquote class=\"blockquote\">Visualization is key to productivity. The right plugins can transform your notes into powerful visual tools.</blockquote>
 
-            <h2 class=\"section-heading\">Version History and Conflict Resolution</h2>
+            <h2 class=\"section-heading\">3. Calendar</h2>
 
-            <p>Obsidian Sync maintains a version history of your notes, allowing you to revert to previous versions if needed. This feature is invaluable when you accidentally delete important information or want to track the evolution of your ideas over time. Additionally, the sync service handles conflict resolution smoothly, ensuring that you don't lose data when edits are made on different devices simultaneously.</p>
+            <p>The Calendar plugin offers a visual interface for navigating your daily notes and planning future entries. It's particularly useful for those who use Obsidian for journaling or time-based note organization. The latest updates have improved its integration with other plugins, making it more powerful than ever.</p>
 
-            <h2 class=\"section-heading\">Selective Syncing</h2>
+            <h2 class=\"section-heading\">4. Excalidraw</h2>
 
-            <p>Not all notes are created equal, and Obsidian Sync recognizes this. You have the flexibility to choose which vaults and folders to sync, allowing you to keep certain information local while sharing others across devices. This selective syncing capability helps you maintain control over your data and optimize storage usage.</p>
+            <p>For visual thinkers, Excalidraw is a game-changer. This plugin brings the popular drawing tool directly into Obsidian, allowing you to create sketches, diagrams, and mind maps within your notes. Its seamless integration with Obsidian's markdown system makes it invaluable for visual note-taking.</p>
 
-            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/obsidian-sync-demo.jpg') . "\" alt=\"Obsidian Sync Demo\" /></a>
-            <span class=\"caption text-muted\">Obsidian Sync keeps your notes organized and accessible across all your devices.</span>
+            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/Obsidian_desktop_demo_workflow.jpg') . "\" alt=\"Obsidian open with a chemistry note, graph view, and calendar open\" /></a>
+            <span class=\"caption text-muted\">Enhance your note-taking experience with powerful Obsidian plugins.</span>
 
-            <h2 class=\"section-heading\">Support for Large Vaults</h2>
+            <h2 class=\"section-heading\">5. Natural Language Dates</h2>
 
-            <p>For power users with extensive note collections, Obsidian Sync shines by efficiently handling large vaults. The service is optimized to sync even substantial amounts of data quickly and reliably, ensuring that your entire knowledge base remains accessible and up-to-date.</p>
+            <p>This plugin allows you to insert dates and times using natural language, streamlining the process of creating and linking to daily notes or setting reminders. It's a small addition that makes a big difference in daily use, especially for those who rely heavily on temporal organization.</p>
 
-            <h2 class=\"section-heading\">Continuous Development and Support</h2>
+            <h2 class=\"section-heading\">6. Omnisearch</h2>
 
-            <p>By subscribing to Obsidian Sync, you're not just getting a service; you're supporting the ongoing development of Obsidian. The team behind the app is constantly working on improvements and new features, many of which are driven by user feedback and needs.</p>
+            <p>Omnisearch takes Obsidian's search functionality to the next level. It offers faster, more accurate search results with features like fuzzy matching and contextual previews. For those with large vaults, Omnisearch is indispensable for quickly finding the right information.</p>
 
-            <p>In conclusion, while Obsidian is a fantastic tool on its own, Obsidian Sync elevates the experience to new heights. The peace of mind, convenience, and additional features it provides make it a worthwhile investment for anyone serious about their note-taking and personal knowledge management. Give Obsidian Sync a try, and you might find that it transforms the way you capture, organize, and access your ideas across all aspects of your life.</p>
+            <p>In conclusion, these plugins represent just a fraction of what's available in the Obsidian community. Each adds unique functionality that can significantly enhance your note-taking and knowledge management processes. Remember to check the official Obsidian community plugin page for the most up-to-date versions and installation instructions. As Obsidian continues to evolve, so too does its plugin ecosystem, constantly offering new ways to customize and improve your personal knowledge management system.</p>
         ";
 
         $publishedAt2 = now()->subDays(0)->format('Y-m-d');
 
-        Post::create([
+        $post2 = Post::create([
             'user_id' => User::factory()->create()->id,
             'title' => 'Must-have Obsidian plugins - 2024 edition',
             'subheading' => 'Level up your note-taking with these built-in and community plugins',
             'content' => $content2,
-            'cover_image' => 'img/home/post-sample-image.jpg',
+            'cover_image' => 'img/Obsidian_desktop_demo_workflow.jpg',
             'published_at' => $publishedAt2,
             'created_at' => $publishedAt2,
             'updated_at' => $publishedAt2,
         ]);
+
+        $tags2 = Tag::whereIn('name', ['Plugins', 'Customization', 'Tips'])->get();
+        foreach ($tags2 as $tag) {
+            $post2->tags()->attach($tag);
+        };
 
         $content3 = "
             <p>In the world of note-taking and personal knowledge management, Obsidian has emerged as a powerful tool for organizing thoughts and ideas. While the core app is free and feature-rich, there's one paid feature that stands out: Obsidian Sync. If you're an Obsidian user or considering diving into the app, here's why you should seriously consider trying Obsidian Sync.</p>
@@ -147,7 +158,7 @@ class PostSeeder extends Seeder
 
         $publishedAt3 = now()->subDays(0)->format('Y-m-d');
 
-        Post::create([
+        $post3 = Post::create([
             'user_id' => User::factory()->create()->id,
             'title' => 'Why you should try Obsidian Sync',
             'subheading' => 'The paid feature is well worth its price',
@@ -157,6 +168,11 @@ class PostSeeder extends Seeder
             'created_at' => $publishedAt3,
             'updated_at' => $publishedAt3,
         ]);
+
+        $tags3 = Tag::whereIn('name', ['Review', 'Productivity'])->get();
+        foreach ($tags3 as $tag) {
+            $post3->tags()->attach($tag);
+        };
 
         $content4 = "
             <p>Note-taking is a powerful tool for self-improvement. It allows us to capture our thoughts, ideas, and insights in a tangible form. By jotting down our observations and reflections, we can better understand ourselves and the world around us. Just like a compass guides a traveler, notes guide us on our journey of personal growth and development.</p>
@@ -181,7 +197,7 @@ class PostSeeder extends Seeder
 
             <p>As we embark on our note-taking journey, our perspective expands. Like the Earth diminishing in size as we move further away, our understanding deepens and broadens. We realize the vastness of knowledge and the infinite possibilities for growth and discovery.</p>
 
-            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/home/post-sample-image.jpg') . "\" alt=\"...\" /></a>
+            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/home/post-bg.jpg') . "\" alt=\"...\" /></a>
 
             <span class=\"caption text-muted\">To go places and do things that have never been done before – that’s what living is all about.</span>
 
@@ -192,7 +208,7 @@ class PostSeeder extends Seeder
 
         $publishedAt4 = now()->subDays(1)->format('Y-m-d');
 
-        Post::create([
+        $post4 = Post::create([
             'user_id' => User::factory()->create()->id,
             'title' => 'Man must explore, and this is exploration at its greatest',
             'subheading' => 'Problems look mighty small from 150 miles up',
@@ -203,7 +219,14 @@ class PostSeeder extends Seeder
             'updated_at' => $publishedAt4,
         ]);
 
-        // Create additional random posts
-        Post::factory(27)->create();
+        $tags4 = Tag::whereIn('name', ['Advanced'])->get();
+        foreach ($tags4 as $tag) {
+            $post4->tags()->attach($tag);
+        };
+
+        Post::factory(27)->create()->each(function ($post) {
+            $randomTags = Tag::inRandomOrder()->take(rand(1, 5))->get();
+            $post->tags()->attach($randomTags);
+        });
     }
 }

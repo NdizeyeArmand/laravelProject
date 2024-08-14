@@ -32,7 +32,7 @@
                 <div class="row h-100">
                     <!-- Left side - Image -->
                     <div class="col-md-7 p-0 bg-image-container">
-                        <div class="h-100 bg-image d-flex align-items-center justify-content-center" style="background-image: url('{{ asset('../img/home/snow-effect-with-wallpaper.gif') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #f0f0f0;"></div>
+                        <div class="h-100 bg-image d-flex align-items-center justify-content-center" style="background-image: url('{{ asset('../img/snow-effect-with-wallpaper.gif') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #f0f0f0;"></div>
                     </div>
 
                     <!-- Vertical line -->

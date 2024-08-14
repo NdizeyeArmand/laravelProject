@@ -2,6 +2,8 @@
 
 @section('title', 'Contact')
 
+@section('header-image', asset('img/home/contact-bg.jpg'))
+
 @section('header')
 <div class="page-heading">
     <h1>{{ __('Contact Me') }}</h1>

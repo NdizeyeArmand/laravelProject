@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true,
         ]);
         $this->call([
+            TagSeeder::class,
             PostSeeder::class,
             FaqCategorySeeder::class,
             FaqItemSeeder::class,

@@ -28,6 +28,11 @@
                     <a href="#!">{{ $post->user->name }}</a>
                     {{ $post->published_at->format('F d, Y') }}
                 </p>
+                <p class="post-tags">
+                    @foreach($post->tags as $tag)
+                        <a href="{{ route('posts.by.tag', $tag->slug) }}" class="badge bg-secondary text-decoration-none link-light">{{ $tag->name }}</a>
+                    @endforeach
+                </p>
                 @can('update-post', $post)
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">Edit</a>
                 @endcan
@@ -51,3 +56,19 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<style>
+    .post-tags {
+        margin-top: 0.5rem;
+    }
+    .post-tags .badge {
+        margin-right: 0.3rem;
+        padding: 0.3em 0.6em;
+        font-size: 0.75em;
+    }
+    .dark-mode .badge {
+        background-color: #495057 !important;
+    }
+</style>
+@endpush

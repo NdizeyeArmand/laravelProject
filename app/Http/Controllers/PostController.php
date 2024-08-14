@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -12,7 +13,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::latest()->take(3)->get();
+        $posts = Post::latest()->take(3)->with('tags')->get();
         return view('welcome', compact('posts'));
     }
 
@@ -43,7 +44,7 @@ class PostController extends Controller
             }
         }
 
-        $posts = $query->paginate(10);
+        $posts = $query->with('tags')->paginate(10);
 
         return view('main', compact('posts'));
     }
@@ -78,6 +79,16 @@ class PostController extends Controller
         $posts = $query->paginate(10);
 
         return view('main', compact('posts'));
+    }
+
+    public function postsByTag($slug)
+    {
+        $tag = Tag::where('slug', $slug)->firstOrFail();
+        $posts = Post::whereHas('tags', function ($query) use ($tag) {
+            $query->where('tags.id', $tag->id);
+        })->with('tags')->paginate(10);
+
+        return view('main', compact('posts', 'tag'));
     }
 
     public function show(Post $post)

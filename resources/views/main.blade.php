@@ -5,7 +5,11 @@
 @section('header')
 <div class="site-heading">
     <h1>{{ __('Explore Obsidian') }}</h1>
-    <span class="subheading">{{ __('Explore Our Latest Posts') }}</span>
+    @if(isset($tag))
+        <span class="subheading">{{ __('Posts tagged with: ') . $tag->name }}</span>
+    @else
+        <span class="subheading">{{ __('Explore Our Latest Posts') }}</span>
+    @endif
 </div>
 @endsection
 
@@ -18,14 +22,14 @@
                 <form action="{{ route('main') }}" method="GET">
                     <div class="row g-3">
                         <div class="col-md-5">
-                            <input type="text" name="q" id="q" class="form-control" placeholder="Search posts..." value="{{ request('q') }}">
+                            <input type="text" name="q" id="q" class="form-control" placeholder="{{ __('Search posts...') }}" value="{{ request('q') }}">
                         </div>
                         <div class="col-md-4">
                             <select name="sort" class="form-select" id="sort" onchange="this.form.submit()">
                                 <option value="">Sort by...</option>
-                                <option value="recent" {{ request('sort') == 'recent' ? 'selected' : '' }}>Most Recent</option>
-                                <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest First</option>
-                                <option value="title" {{ request('sort') == 'title' ? 'selected' : '' }}>Title (A-Z)</option>
+                                <option value="recent" {{ request('sort') == 'recent' ? 'selected' : '' }}>{{ __('Most Recent') }}</option>
+                                <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>{{ __('Oldest First') }}</option>
+                                <option value="title" {{ request('sort') == 'title' ? 'selected' : '' }}>{{ __('Title (A-Z)') }}</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -50,6 +54,11 @@
                     {{ __('Posted by') }}
                     <a href="#!">{{ $post->user->name }}</a>
                     {{ $post->published_at->format('F d, Y') }}
+                </p>
+                <p class="post-tags">
+                    @foreach($post->tags as $tag)
+                        <a href="{{ route('posts.by.tag', $tag->slug) }}" class="badge bg-secondary text-decoration-none link-light">{{ $tag->name }}</a>
+                    @endforeach
                 </p>
                 @can('update-post', $post)
                     <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">{{ __('Edit') }}</a>
@@ -85,6 +94,17 @@
     }
     .form-control, .form-select, .btn {
         border-radius: 20px;
+    }
+    .post-tags {
+        margin-top: 0.5rem;
+    }
+    .post-tags .badge {
+        margin-right: 0.3rem;
+        padding: 0.3em 0.6em;
+        font-size: 0.75em;
+    }
+    .dark-mode .badge {
+        background-color: #495057 !important;
     }
     .btn-primary {
         background-color: #007bff;
