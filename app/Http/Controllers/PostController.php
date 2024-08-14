@@ -45,8 +45,9 @@ class PostController extends Controller
         }
 
         $posts = $query->with('tags')->paginate(10);
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
 
-        return view('main', compact('posts'));
+        return view('main', compact('posts', 'tags'));
     }
 
     public function search(Request $request)
@@ -87,8 +88,9 @@ class PostController extends Controller
         $posts = Post::whereHas('tags', function ($query) use ($tag) {
             $query->where('tags.id', $tag->id);
         })->with('tags')->paginate(10);
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
 
-        return view('main', compact('posts', 'tag'));
+        return view('main', compact('posts', 'tag', 'tags'));
     }
 
     public function show(Post $post)

@@ -13,6 +13,11 @@
         <a href="#!">{{ $post->user->name }}</a>
         {{ $post->published_at->format('F d, Y') }}
     </span>
+    <div class="post-tags">
+        @foreach($post->tags as $tag)
+            <a href="{{ route('posts.by.tag', $tag->slug) }}" class="badge bg-secondary text-decoration-none link-light">{{ $tag->name }}</a>
+        @endforeach
+    </div>
     @can('update-post', $post)
         <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">Edit</a>
     @endcan

@@ -15,6 +15,19 @@
 
 @section('content')
 <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center mb-4">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="card tags-card">
+                <div class="card-body">
+                    <div class="tags-cloud">
+                        @foreach($tags as $tag)
+                            <a href="{{ route('posts.by.tag', $tag->slug) }}" class="tag-item">{{ $tag->name }}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="card">
@@ -105,6 +118,40 @@
     }
     .dark-mode .badge {
         background-color: #495057 !important;
+    }
+    .tags-card {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: none;
+        margin-bottom: 2rem;
+    }
+    .dark-mode .tags-card {
+        background-color: #343a40;
+    }
+    .tags-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .tag-item {
+        background-color: #e9ecef;
+        color: #495057;
+        padding: 5px 10px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.9em;
+        transition: background-color 0.3s ease;
+    }
+    .tag-item:hover {
+        background-color: #ced4da;
+        text-decoration: none;
+    }
+    .dark-mode .tag-item {
+        background-color: #495057;
+        color: #e9ecef;
+    }
+    .dark-mode .tag-item:hover {
+        background-color: #6c757d;
     }
     .btn-primary {
         background-color: #007bff;
