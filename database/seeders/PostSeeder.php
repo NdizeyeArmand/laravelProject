@@ -16,38 +16,59 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         $content1 = "
-            <p>In the world of note-taking and personal knowledge management, Obsidian has emerged as a powerful tool for organizing thoughts and ideas. While the core app is free and feature-rich, there's one paid feature that stands out: Obsidian Sync. If you're an Obsidian user or considering diving into the app, here's why you should seriously consider trying Obsidian Sync.</p>
+            <p>In the realm of personal knowledge management, <a href=\"https://obsidian.md\">Obsidian</a> has emerged as a powerful tool for organizing thoughts and ideas. This beginner's guide will introduce you to Obsidian's key features and help you get started on your journey to more effective note-taking.</p>
 
-            <h2 class=\"section-heading\">Seamless Cross-Device Synchronization</h2>
+            <h2 class=\"section-heading\">What is Obsidian?</h2>
             
-            <p>One of the primary benefits of Obsidian Sync is its ability to keep your notes synchronized across multiple devices effortlessly. Whether you're working on your desktop, laptop, tablet, or smartphone, your notes are always up-to-date. This seamless integration ensures that you have access to your latest thoughts and ideas, regardless of where you are or which device you're using.</p>
+            <p>Obsidian is a markdown-based note-taking application that uses the zettelkasten method. It's designed to help you create an interconnected web of knowledge, emphasizing connections between ideas rather than mere collection of information.</p>
 
-            <h2 class=\"section-heading\">Enhanced Security and Privacy</h2>
+            <h2 class=\"section-heading\">Key Features of Obsidian</h2>
 
-            <p>Unlike third-party sync solutions, Obsidian Sync offers end-to-end encryption for your data. This means that your notes are encrypted before they leave your device and can only be decrypted by you. For those who value privacy and security, especially when dealing with sensitive information, this feature alone makes Obsidian Sync worth considering.</p>
+            <p>Obsidian offers several features that set it apart from traditional note-taking apps:</p>
+            <ul>
+                <li>Markdown formatting for easy-to-read and portable notes</li>
+                <li>Linking between notes to create a knowledge network</li>
+                <li>Local storage of your notes, ensuring privacy and control</li>
+                <li>A plugin system for extending functionality</li>
+                <li>Customizable workspace and themes</li>
+            </ul>
 
-            <blockquote class=\"blockquote\">Your thoughts are precious. Protect them with the same diligence you'd protect any other valuable asset.</blockquote>
+            <blockquote class=\"blockquote\">Your second brain is only as powerful as the connections it can make. Obsidian helps you build those connections.</blockquote>
 
-            <h2 class=\"section-heading\">Version History and Conflict Resolution</h2>
+            <h2 class=\"section-heading\">Getting Started with Obsidian</h2>
 
-            <p>Obsidian Sync maintains a version history of your notes, allowing you to revert to previous versions if needed. This feature is invaluable when you accidentally delete important information or want to track the evolution of your ideas over time. Additionally, the sync service handles conflict resolution smoothly, ensuring that you don't lose data when edits are made on different devices simultaneously.</p>
+            <p>To begin using Obsidian:</p>
+            <ol>
+                <li>Download and install <a href=\"https://obsidian.md\">Obsidian</a> from their official website</li>
+                <li>Create a new vault (Obsidian's term for a note collection)</li>
+                <li>Start creating notes using markdown syntax</li>
+                <li>Link your notes using double square brackets [[like this]]</li>
+                <li>Explore the graph view to visualize your note connections</li>
+            </ol>
 
-            <h2 class=\"section-heading\">Selective Syncing</h2>
+            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/obsidian-interface.jpg') . "\" alt=\"Obsidian Interface\" /></a>
+            <span class=\"caption text-muted\">The Obsidian interface, showcasing linked notes and the graph view.</span>
 
-            <p>Not all notes are created equal, and Obsidian Sync recognizes this. You have the flexibility to choose which vaults and folders to sync, allowing you to keep certain information local while sharing others across devices. This selective syncing capability helps you maintain control over your data and optimize storage usage.</p>
+            <h2 class=\"section-heading\">Advanced Features</h2>
 
-            <a href=\"#!\"><img class=\"img-fluid\" src=\"" . url('/img/obsidian-sync-demo.jpg') . "\" alt=\"Obsidian Sync Demo\" /></a>
-            <span class=\"caption text-muted\">Obsidian Sync keeps your notes organized and accessible across all your devices.</span>
+            <p>As you become more comfortable with Obsidian, explore these advanced features:</p>
+            <ul>
+                <li>Plugins for extended functionality like Kanban boards and calendar integration</li>
+                <li>Templates for consistent note structures</li>
+                <li>Dataview for querying and displaying note information</li>
+                <li>Custom CSS for personalized themes</li>
+            </ul>
 
-            <h2 class=\"section-heading\">Support for Large Vaults</h2>
+            <h2 class=\"section-heading\">Community and Resources</h2>
 
-            <p>For power users with extensive note collections, Obsidian Sync shines by efficiently handling large vaults. The service is optimized to sync even substantial amounts of data quickly and reliably, ensuring that your entire knowledge base remains accessible and up-to-date.</p>
+            <p>Obsidian boasts a large and active community. Engage with other users through:</p>
+            <ul>
+                <li>The official Obsidian forum</li>
+                <li>Reddit community r/ObsidianMD</li>
+                <li>YouTube tutorials and showcases</li>
+            </ul>
 
-            <h2 class=\"section-heading\">Continuous Development and Support</h2>
-
-            <p>By subscribing to Obsidian Sync, you're not just getting a service; you're supporting the ongoing development of Obsidian. The team behind the app is constantly working on improvements and new features, many of which are driven by user feedback and needs.</p>
-
-            <p>In conclusion, while Obsidian is a fantastic tool on its own, Obsidian Sync elevates the experience to new heights. The peace of mind, convenience, and additional features it provides make it a worthwhile investment for anyone serious about their note-taking and personal knowledge management. Give Obsidian Sync a try, and you might find that it transforms the way you capture, organize, and access your ideas across all aspects of your life.</p>
+            <p>In conclusion, Obsidian offers a unique approach to note-taking and knowledge management. Its flexibility and powerful features make it an excellent choice for students, researchers, and anyone looking to organize their thoughts more effectively. Start small, experiment with different techniques, and gradually build your personal knowledge base with Obsidian.</p>
         ";
 
         $publishedAt1 = '2023-12-16';
@@ -57,7 +78,7 @@ class PostSeeder extends Seeder
             'title' => 'Taking notes with Obsidian',
             'subheading' => 'A beginner\'s guide',
             'content' => $content1,
-            'cover_image' => 'img/home/post-sample-image.jpg',
+            'cover_image' => 'img/obsidian-interface.jpg',
             'published_at' => $publishedAt1,
             'created_at' => $publishedAt1,
             'updated_at' => $publishedAt1,

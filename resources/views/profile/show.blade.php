@@ -37,7 +37,7 @@
 
 @push('head')
 <style>
-        #mainNav {
+    #mainNav {
         position: relative;
         border-bottom: 1px solid #dee2e6;
         background-color: #fff;

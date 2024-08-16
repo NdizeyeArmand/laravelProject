@@ -13,8 +13,9 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::latest()->take(3)->with('tags')->get();
-        return view('welcome', compact('posts'));
+        $oldestPost = Post::oldest()->with('tags')->first();
+        $latestPosts = Post::latest()->take(3)->with('tags')->get();
+        return view('welcome', compact('oldestPost', 'latestPosts'));
     }
 
     public function indexMain(Request $request)

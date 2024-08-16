@@ -13,7 +13,19 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            @foreach($posts as $post)
+        <h1>{{ __('Welcome to the World of Personal Knowledge Management') }}</h1>
+<p>{{ __('Discover') }} <a href="https://obsidian.md">{{ __('Obsidian') }}</a>{{ __(': The premier choice for those seeking to build and expand their knowledge base. Whether you\'re a seasoned note-taker or just starting out, Obsidian offers powerful tools to organize your thoughts and ideas.') }}</p>
+
+@if($oldestPost)
+    <p>{{ __('New to Obsidian? Check out our') }} <a href="{{ route('posts.show', $oldestPost->slug) }}">{{ __('beginner\'s guide') }}</a> {{ __('to get started on your journey.') }}</p>
+@endif
+
+<p>{{ __('We welcome all perspectives! Whether you\'re a fan or a critic, share your Obsidian experience or insights by writing a post. Your voice matters in our community.') }}</p>
+
+<h2>{{ __('Interest piqued? Join us and explore these recent posts we\'ve lined up just for you!') }}</h2>
+            <br>
+                
+            @foreach($latestPosts as $post)
             <!-- Post preview-->
             <div class="post-preview">
                 <a href="{{ route('posts.show', $post->slug) }}">
