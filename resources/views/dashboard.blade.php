@@ -21,6 +21,20 @@
                             {{ __('Email & Password') }}
                         </a>
                     </li>
+                    @if(auth()->user()->isAdmin())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.messages.index') }}">
+                            <i class="bi bi-gear-fill"></i>
+                            {{ __('Contact messages') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.index') }}">
+                            <i class="bi bi-people-fill"></i>
+                            {{ __('Manage Users') }}
+                        </a>
+                    </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="bi bi-box-arrow-right"></i>

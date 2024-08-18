@@ -34,6 +34,11 @@ Route::middleware(['auth', 'can:manage-faq'])->group(function () {
     Route::delete('/faq/item/{item}', [FAQController::class, 'deleteItem'])->name('faq.items.destroy');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::post('/admin/update-status', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
+});
+
 Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('/posts/random', [PostController::class, 'random'])->name('posts.random');
