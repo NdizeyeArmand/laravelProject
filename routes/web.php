@@ -22,12 +22,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'can:manage-faq'])->group(function () {
-    Route::post('/faq/category', [FAQController::class, 'addCategory']);
-    Route::put('/faq/category/{category}', [FAQController::class, 'editCategory']);
-    Route::delete('/faq/category/{category}', [FAQController::class, 'deleteCategory']);
-    Route::post('/faq/item', [FAQController::class, 'addItem']);
-    Route::put('/faq/item/{item}', [FAQController::class, 'editItem']);
-    Route::delete('/faq/item/{item}', [FAQController::class, 'deleteItem']);
+    Route::post('/faq/category', [FAQController::class, 'addCategory'])->name('faq.categories.create');
+    Route::put('/faq/category/{category}', [FAQController::class, 'editCategory'])->name('faq.categories.edit');
+    Route::delete('/faq/category/{category}', [FAQController::class, 'deleteCategory'])->name('faq.categories.destroy');
+    Route::post('/faq/item', [FAQController::class, 'addItem'])->name('faq.items.create');
+    Route::put('/faq/item/{item}', [FAQController::class, 'editItem'])->name('faq.items.edit');
+    Route::delete('/faq/item/{item}', [FAQController::class, 'deleteItem'])->name('faq.items.destroy');
 });
 
 Route::get('/', [PostController::class, 'index'])->name('home');
