@@ -30,7 +30,7 @@
             <div class="post-preview">
                 <a href="{{ route('posts.show', $post->slug) }}">
                 @if($post->cover_image)
-                    <img src="{{ asset($post->cover_image) }}" alt="{{ $post->title }}" class="img-fluid mb-3">
+                    <img src="{{ getCoverImageUrl($post->cover_image) }}" alt="{{ $post->title }}" class="img-fluid mb-3">
                 @endif
                     <h2 class="post-title">{{ $post->title }}</h2>
                     <h3 class="post-subtitle">{{ $post->subheading }}</h3>
@@ -61,8 +61,17 @@
             <hr class="my-4" />
             @endforeach
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary text-uppercase" href="{{ route('main') }}">{{ __('Older Posts →') }}</a>
+            <div class="d-flex justify-content-between mb-4">
+                <div>
+                    @auth
+                        <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('Create New Post') }}</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-primary">{{ __('Login to Create Post') }}</a>
+                    @endauth
+                </div>
+                <div>
+                    <a class="btn btn-primary" href="{{ route('main') }}">{{ __('Older Posts →') }}</a>
+                </div>
             </div>
         </div>
     </div>

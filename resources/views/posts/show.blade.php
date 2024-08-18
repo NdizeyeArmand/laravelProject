@@ -2,7 +2,7 @@
 
 @section('title', $post->title)
 
-@section('header-image', asset($post->cover_image))
+@section('header-image', getCoverImageUrl($post->cover_image))
 
 @section('header')
 <div class="post-heading">

@@ -8,6 +8,8 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
 class PostController extends Controller
 {
@@ -101,36 +103,68 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
+    }
+
+    public function random()
+    {
+        $post = Post::inRandomOrder()->first();
+        
+        if ($post) {
+            return redirect()->route('posts.show', $post->slug);
+        } else {
+            return redirect()->route('home')->with('message', 'No posts available.');
+        }
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'subheading' => 'max:255',
+            'subheading' => 'nullable|string|max:255',
             'content' => 'required',
-            'cover_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'tags' => ['nullable', 'regex:/^[a-zA-Z0-9, ]*$/'],
         ]);
 
-        $slug = Str::slug($post->title);
-        $count = 2;
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $cleanContent = $purifier->purify($validatedData['content']);
+
+        $slug = Str::slug($validatedData['title']);
+        $originalSlug = $slug;
+        $count = 1;
         while (Post::where('slug', $slug)->exists()) {
-            $slug = Str::slug($request->title) . '-' . $count;
+            $slug = $originalSlug . '-' . $count;
             $count++;
         }
 
-        $post = new Post($validatedData);
+        $post = new Post();
+        $post->title = $validatedData['title'];
+        $post->subheading = $validatedData['subheading'];
+        $post->content = $cleanContent;
         $post->user_id = Auth::id();
         $post->slug = $slug;
+        $post->published_at = now();
 
 
         if ($request->hasFile('cover_image')) {
             $path = $request->file('cover_image')->store('cover_images', 'public');
             $post->cover_image = $path;
+        } else {
+            $post->cover_image = $validatedData['cover_image'];
         }
 
         $post->save();
+
+        if (!empty($validatedData['tags'])) {
+            $tags = explode(',', $validatedData['tags']);
+            foreach ($tags as $tag) {
+                $tag = Tag::firstOrCreate(['name' => trim($tag)]);
+                $post->tags()->attach($tag->id);
+            }
+        }
 
         return redirect()->route('posts.show', $post->slug)->with('success', 'Post created successfully.');
     }
@@ -149,7 +183,12 @@ class PostController extends Controller
             'cover_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $cleanContent = $purifier->purify($validatedData['content']);
+
         $post->fill($validatedData);
+        $post->content = $cleanContent;
         $post->slug = Str::slug($post->title);
 
         if ($request->hasFile('cover_image')) {

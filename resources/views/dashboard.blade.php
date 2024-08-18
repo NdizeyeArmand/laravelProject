@@ -10,7 +10,7 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="{{ route('dashboard') }}">
                             <i class="bi bi-house-door-fill"></i>
                             {{ __('Dashboard') }}
                         </a>
@@ -22,11 +22,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="bi bi-box-arrow-right"></i>
                             {{ __('Sign out') }}
                         </a>
                     </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </ul>
             </div>
         </div>
@@ -36,29 +39,23 @@
             <!-- Top Section with Background Image -->
             <div class="p-4 mb-4 bg-primary text-white rounded-3">
                 <div class="container-fluid py-5">
-                    <h1 class="display-5 fw-bold">{{ __('Welcome to Your Dashboard, ') . auth()->user()->name }}</h1>
+                    <h1 class="display-5 fw-bold">{{ __('Welcome to your dashboard, ') . auth()->user()->name }}</h1>
                     <p class="col-md-8 fs-4">You can contribute to the site by making posts.</p>
                 </div>
             </div>
 
             <!-- Bottom Section with Links -->
             <div class="row">
-                <div class="col-md-4">
-                    <h2>Section 1</h2>
+                <div class="col-md-6">
+                    <h2>Writing</h2>
                     <p>
-                        <a class="btn btn-secondary" href="#">View details &raquo;</a>
+                        <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('Create new post') }}</a>
                     </p>
                 </div>
-                <div class="col-md-4">
-                    <h2>Section 2</h2>
+                <div class="col-md-6">
+                    <h2>Reading</h2>
                     <p>
-                        <a class="btn btn-secondary" href="#">View details &raquo;</a>
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Section 3</h2>
-                    <p>
-                        <a class="btn btn-secondary" href="#">View details &raquo;</a>
+                    <a href="{{ route('posts.random') }}" class="btn btn-primary">{{ __('Read random post') }}</a>
                     </p>
                 </div>
             </div>

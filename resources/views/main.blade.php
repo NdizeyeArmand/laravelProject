@@ -58,7 +58,7 @@
             <div class="post-preview">
                 <a href="{{ route('posts.show', $post->slug) }}">
                 @if($post->cover_image)
-                    <img src="{{ asset($post->cover_image) }}" alt="{{ $post->title }}" class="img-fluid mb-3">
+                    <img src="{{ getCoverImageUrl($post->cover_image) }}" alt="{{ $post->title }}" class="img-fluid mb-3">
                 @endif
                     <h2 class="post-title">{{ $post->title }}</h2>
                     <h3 class="post-subtitle">{{ $post->subheading }}</h3>
