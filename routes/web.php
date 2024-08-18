@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ProfileController;
@@ -39,6 +40,8 @@ Route::get('/dashboard', [ViewController::class, 'dashboard'])->middleware(['aut
 Route::get('/FAQ', [FAQController::class, 'showFAQ'])->name('FAQ');
 
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+Route::get('/admin/messages', [ContactController::class, 'index'])->name('admin.messages.index');
 
 Route::get('/about', [ViewController::class, 'about'])->name('about');
 

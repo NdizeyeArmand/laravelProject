@@ -2,13 +2,6 @@
 
 @section('title', __('Create New Post'))
 
-@section('header')
-<div class="site-heading">
-    <h1>{{ __('Create New Post') }}</h1>
-    <span class="subheading">{{ __('Share Your Thoughts with the Community') }}</span>
-</div>
-@endsection
-
 @section('content')
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
