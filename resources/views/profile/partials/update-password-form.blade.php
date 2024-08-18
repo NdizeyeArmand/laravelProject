@@ -1,6 +1,6 @@
 <h3 class="font-weight-bold mb-3">{{ __('Update Password') }}</h3>
 
-<form method="POST" action="{{ route('user-password.update') }}">
+<form method="POST" action="{{ route('password.update') }}">
     @csrf
     @method('PUT')
 
