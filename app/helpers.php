@@ -15,3 +15,15 @@ if (!function_exists('getCoverImageUrl')) {
         return asset($coverImagePath);
     }
 }
+
+if (!function_exists('getAvatarUrl')) {
+    function getAvatarUrl($avatarPath = null)
+    {
+        if ($avatarPath && Str::startsWith($avatarPath, 'avatars/')) {
+            return Storage::url($avatarPath);
+        }
+
+        // Return the default avatar if no custom avatar is set
+        return asset('img/default-avatar.png');
+    }
+}

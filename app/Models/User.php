@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
+        'avatar',
     ];
 
     /**
@@ -44,6 +45,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        return getAvatarUrl($this->avatar);
     }
 
     public function posts()

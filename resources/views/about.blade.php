@@ -46,7 +46,10 @@
                         samuelsong70. (2022-07). Obsidian dynamic background image [Image]. GitHub. Retrieved 2024-08 from <a href="https://github.com/samuelsong70/obsidian-dynamic-background">https://github.com/samuelsong70/obsidian-dynamic-background</a>
                     </p></li>
                     <li><p>
-                        Start Bootstrap. (2014-09-14). Clean Blog v6.0.9 [Website template]. Retrieved 2024-07s from <a href="https://startbootstrap.com/theme/clean-blog">https://startbootstrap.com/theme/clean-blog</a>
+                        Start Bootstrap. (2014-09-14). Clean Blog v6.0.9 [Website template]. Retrieved 2024-07 from <a href="https://startbootstrap.com/theme/clean-blog">https://startbootstrap.com/theme/clean-blog</a>
+                    </p></li>
+                    <li><p>
+                        elektor [Image]. Retrieved 2024-08-18 from <a href="https://www.elektormagazine.nl/labs/remake-elektor-weather-station">https://www.elektormagazine.nl/labs/remake-elektor-weather-station</a>
                     </p></li>
                 </ul>
             </div>

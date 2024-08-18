@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\UserAvatarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/admin', [ProfileController::class, 'showAdmin'])->name('profile.admin');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::put('/user/avatar', [UserAvatarController::class, 'update'])->name('user-avatar.update');
 
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
