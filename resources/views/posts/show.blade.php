@@ -10,9 +10,9 @@
     <h2 class="subheading">{{ $post->subheading }}</h2>
     <span class="meta">
         {{ __('Posted by') }}
-        <a href="#!">
+        <a href="{{ route('profile.show', $post->user->username) }}">
             <img src="{{ getAvatarUrl($post->user->avatar) }}" alt="{{ $post->user->name }}'s Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
-            {{ $post->user->name }}
+            {{ $post->user->username }}
         </a>
         {{ $post->published_at->format('F d, Y') }}
     </span>

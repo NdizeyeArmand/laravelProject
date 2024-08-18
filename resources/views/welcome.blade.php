@@ -37,7 +37,7 @@
                 </a>
                 <p class="post-meta">
                     {{ __('Posted by') }}
-                    <a href="#!">{{ $post->user->name }}</a>
+                    <a href="{{ route('profile.show', $post->user->username) }}">{{ $post->user->username }}</a>
                     {{ $post->published_at->format('F d, Y') }}
                 </p>
                 <p class="post-tags">

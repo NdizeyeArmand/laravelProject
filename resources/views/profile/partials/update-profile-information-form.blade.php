@@ -2,7 +2,7 @@
     <h2 class="h4 mb-3">{{ __('Profile Information') }}</h2>
 
     <p class="text-muted mb-4">
-        {{ __("Update your account's profile information and email address.") }}
+        {{ __("Update your account's profile information.") }}
     </p>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -19,6 +19,11 @@
             @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ old('username', $user->username) }}" required>
         </div>
 
         <div class="mb-3">
@@ -45,6 +50,16 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Birthday</label>
+            <input type="date" class="form-control" id="birthday" name="birthday" value="{{ old('birthday', $user->birthday?->format('Y-m-d')) }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="bio" class="form-label">About Me</label>
+            <textarea class="form-control" id="bio" name="bio" rows="3">{{ old('bio', $user->bio) }}</textarea>
         </div>
 
         <div class="d-flex align-items-center">

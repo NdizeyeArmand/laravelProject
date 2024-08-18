@@ -37,3 +37,29 @@
     </form>
 </div>
 @endsection
+
+@push('head')
+<style>
+    #mainNav {
+        position: relative;
+        border-bottom: 1px solid #dee2e6;
+        background-color: #fff;
+    }
+    #mainNav .navbar-brand,
+    #mainNav .navbar-nav > li.nav-item > a.nav-link {
+        color: #212529;
+    }
+    #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, 
+    #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
+    #mainNav.is-fixed .navbar-brand,
+    #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+        color: #0085A1;
+    }
+    .dark-mode #mainNav .navbar-brand:focus, .dark-mode #mainNav .navbar-brand:hover {
+        color: #0085A1 !important;
+    }
+    .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
+        color: #0085A1 !important;
+    }
+</style>
+@endpush
