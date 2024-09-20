@@ -17,19 +17,19 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profile.edit') }}">
-                            <i class="bi bi-envelope-fill"></i>
+                            <i class="bi bi-gear-fill"></i>
                             {{ __('Email & Password') }}
                         </a>
                     </li>
                     @if(auth()->user()->isAdmin())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.messages.index') }}">
-                            <i class="bi bi-gear-fill"></i>
+                            <i class="bi bi-envelope-fill"></i>
                             {{ __('Contact messages') }}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.index') }}">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">
                             <i class="bi bi-people-fill"></i>
                             {{ __('Manage Users') }}
                         </a>

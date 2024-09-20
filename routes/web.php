@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ImageUploadController;
@@ -12,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/profile/admin', [ProfileController::class, 'showAdmin'])->name('profile.admin');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/user/avatar', [UserAvatarController::class, 'update'])->name('user-avatar.update');
@@ -34,8 +35,9 @@ Route::middleware(['auth', 'can:manage-faq'])->group(function () {
     Route::delete('/faq/item/{item}', [FAQController::class, 'deleteItem'])->name('faq.items.destroy');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/messages', [ContactController::class, 'index'])->name('admin.messages.index');
     Route::post('/admin/update-status', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
 });
 
@@ -49,7 +51,6 @@ Route::get('/FAQ', [FAQController::class, 'showFAQ'])->name('FAQ');
 
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
-Route::get('/admin/messages', [ContactController::class, 'index'])->name('admin.messages.index');
 
 Route::get('/about', [ViewController::class, 'about'])->name('about');
 
@@ -61,7 +62,5 @@ Route::get('/main/search', [PostController::class, 'search'])->name('main.search
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');
 Route::get('/tags/{slug}', [PostController::class, 'postsByTag'])->name('posts.by.tag');
-
-Route::get('/users/{user}', [ProfileController::class, 'showPublicProfile'])->name('profile.show');
 
 require __DIR__.'/auth.php';

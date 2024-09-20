@@ -22,13 +22,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function showAdmin(Request $request): View
-    {
-        return view('profile.admin', [
-            'user' => $request->user(),
-        ]);
-    }
-
     /**
      * Display the public profile of a user.
      */

@@ -57,6 +57,11 @@ class User extends Authenticatable
         return getAvatarUrl($this->avatar);
     }
 
+    public function isAdmin()
+    {
+        return $this->is_admin; // Assuming 'is_admin' is a boolean column in your users table
+    }
+
     protected static function boot()
     {
         parent::boot();

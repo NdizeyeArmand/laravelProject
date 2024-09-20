@@ -1,43 +1,92 @@
-@extends('app.layout')
+@extends('layouts.app')
+
+@section('full-title', 'User Management Dashboard')
 
 @section('content')
-<div class="container">
-    <h1>Admin Dashboard</h1>
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ route('dashboard') }}">
+                            <i class="bi bi-house-door-fill"></i>
+                            {{ __('Dashboard') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('profile.edit') }}">
+                            <i class="bi bi-gear-fill"></i>
+                            {{ __('Email & Password') }}
+                        </a>
+                    </li>
+                    @if(auth()->user()->isAdmin())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.messages.index') }}">
+                            <i class="bi bi-envelope-fill"></i>
+                            {{ __('Contact messages') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                            <i class="bi bi-people-fill"></i>
+                            {{ __('Manage Users') }}
+                        </a>
+                    </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="bi bi-box-arrow-right"></i>
+                            {{ __('Sign out') }}
+                        </a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </ul>
+            </div>
         </div>
-    @endif
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($users as $user)
-                <tr>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->is_admin ? 'Admin' : 'User' }}</td>
-                    <td>
-                        <form action="{{ route('admin.updateStatus') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
-                            <select name="is_admin" class="form-control">
-                                <option value="1" {{ $user->is_admin ? 'selected' : '' }}>Admin</option>
-                                <option value="0" {{ !$user->is_admin ? 'selected' : '' }}>User</option>
-                            </select>
-                            <button type="submit" class="btn btn-primary mt-2">Update</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h1>Admin Dashboard</h1>
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->is_admin ? 'Admin' : 'User' }}</td>
+                            <td>
+                                <form action="{{ route('admin.updateStatus') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    <select name="is_admin" class="form-control">
+                                        <option value="1" {{ $user->is_admin ? 'selected' : '' }}>Admin</option>
+                                        <option value="0" {{ !$user->is_admin ? 'selected' : '' }}>User</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary mt-2">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </main>
+    </div>
 </div>
 @endsection
 
@@ -63,6 +112,13 @@
     }
     .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
         color: #0085A1 !important;
+    }
+    body.dark-mode .sidebar {
+        background-color: #343a40;
+    }
+    body:not(.dark-mode) .sidebar {
+        --bs-bg-opacity: 1;
+        background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
     }
 </style>
 @endpush
