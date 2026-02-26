@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->fullText(['title', 'subheading']);
-        });
+        if (config('database.default') === 'mysql') {
+            Schema::table('posts', function (Blueprint $table) {
+                $table->fullText(['title', 'subheading']);
+            });
+        }
     }
 
     /**
@@ -21,8 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropFullText(['title', 'subheading']);
-        });
+        if (config('database.default') === 'mysql') {
+            Schema::table('posts', function (Blueprint $table) {
+                $table->dropFullText(['title', 'subheading']);
+            });
+        }
     }
 };
