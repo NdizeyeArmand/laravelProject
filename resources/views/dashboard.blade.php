@@ -50,27 +50,27 @@
 
         <!-- Main Content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <!-- Top Section with Background Image -->
-            <div class="p-4 mb-4 bg-primary text-white rounded-3">
-                <div class="container-fluid py-5">
+            <div class="dashboard-hero p-4 mb-4 rounded-3">
+                <div class="py-4">
                     <h1 class="display-5 fw-bold">{{ __('Welcome to your dashboard, ') . auth()->user()->name }}</h1>
-                    <p class="col-md-8 fs-4">You can contribute to the site by making posts.</p>
+                    <p class="col-md-8 fs-5 mb-0 text-muted">{{ __('What would you like to do today?') }}</p>
                 </div>
             </div>
 
-            <!-- Bottom Section with Links -->
-            <div class="row">
+            <div class="row g-4 mb-4">
                 <div class="col-md-6">
-                    <h2>Writing</h2>
-                    <p>
-                        <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('Create new post') }}</a>
-                    </p>
+                    <div class="dashboard-card p-4 rounded-3 h-100">
+                        <h2 class="h5 fw-bold mb-1">✍️ Writing</h2>
+                        <p class="text-muted mb-3">Share your thoughts with the community</p>
+                        <a href="{{ route('posts.create') }}" class="btn btn-brand">{{ __('Create new post') }}</a>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <h2>Reading</h2>
-                    <p>
-                    <a href="{{ route('posts.random') }}" class="btn btn-primary">{{ __('Read random post') }}</a>
-                    </p>
+                    <div class="dashboard-card p-4 rounded-3 h-100">
+                        <h2 class="h5 fw-bold mb-1">📖 Reading</h2>
+                        <p class="text-muted mb-3">Discover something new from the community.</p>
+                        <a href="{{ route('posts.random') }}" class="btn btn-brand">{{ __('Read random post') }}</a>
+                    </div>
                 </div>
             </div>
         </main>
@@ -80,11 +80,6 @@
 
 @push('head')
 <style>
-    #mainNav {
-        position: relative;
-        border-bottom: 1px solid #dee2e6;
-        background-color: #fff;
-    }
     #mainNav .navbar-brand,
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
         color: #212529;
@@ -108,6 +103,41 @@
     body:not(.dark-mode) .sidebar {
         --bs-bg-opacity: 1;
         background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
+    }
+    .dashboard-hero {
+        border: 1px solid #dee2e6;
+        background-color: #f8f9fa;
+    }
+    .dark-mode .dashboard-hero {
+        background-color: #2b3035;
+        border-color: #495057;
+    }
+    .dark-mode .dashboard-hero h1 {
+        color: #f8f9fa;
+    }
+    .dashboard-card {
+        border: 1px solid #dee2e6;
+        background-color: #fff;
+    }
+    .dark-mode .dashboard-card {
+        background-color: #2b3035;
+        border-color: #495057;
+    }
+    .dark-mode .dashboard-card h2 {
+        color: #f8f9fa;
+    }
+    .dark-mode .text-muted {
+        color: #adb5bd !important;
+    }
+    .btn-brand {
+        background-color: #0085A1;
+        border-color: #0085A1;
+        color: #fff;
+    }
+    .btn-brand:hover {
+        background-color: #006d84;
+        border-color: #006d84;
+        color: #fff;
     }
 </style>
 @endpush

@@ -179,6 +179,16 @@ body.dark-mode .bg-image {
   border-color: #004085;
 }
 
+.content-surface {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.dark-mode .content-surface {
+    background-color: #2b3035;
+    border-color: #495057;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -660,6 +670,18 @@ progress {
 }
 .list-inline-item:not(:last-child) {
   margin-right: 0.5rem;
+}
+
+.obsidian-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #212529;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.obsidian-icon-link:hover .obsidian-icon {
+    transform: scale(1.1);
 }
 
 .initialism {
@@ -10830,6 +10852,22 @@ blockquote {
   }
 }
 
+body.exception-page #mainNav {
+    position: relative;
+    border-bottom: 1px solid #dee2e6;
+    background-color: #fff;
+}
+
+body.exception-page #mainNav.is-fixed {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+}
+
+.dark-mode body.exception-page #mainNav {
+    background-color: rgba(68, 68, 68, 0.9) !important;
+    border-bottom: 1px solid #555;
+}
 /* Default state on non-hero pages (auth, dashboard, etc.)
    Override the media query that forces white text */
 body.exception-page #mainNav .navbar-brand,

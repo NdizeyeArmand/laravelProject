@@ -49,30 +49,32 @@
         </div>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <h1>Contact Messages</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Message</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($messages as $message)
+            <div class="content-surface p-4 rounded-3 mt-3">
+                <h1>Contact Messages</h1>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>{{ $message->name }}</td>
-                            <td>{{ $message->email }}</td>
-                            <td>{{ $message->phone }}</td>
-                            <td>{!! nl2br(e($message->message)) !!}</td>
-                            <td>{{ $message->created_at->timezone('Europe/Brussels')->format('Y-m-d H:i:s') }}</td>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th>Date</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{ $messages->links() }}
+                    </thead>
+                    <tbody>
+                        @foreach($messages as $message)
+                            <tr>
+                                <td>{{ $message->name }}</td>
+                                <td>{{ $message->email }}</td>
+                                <td>{{ $message->phone }}</td>
+                                <td>{!! nl2br(e($message->message)) !!}</td>
+                                <td>{{ $message->created_at->timezone('Europe/Brussels')->format('Y-m-d H:i:s') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $messages->links() }}
+            </div>
         </main>
     </div>
 </div>
@@ -80,11 +82,6 @@
 
 @push('head')
 <style>
-    #mainNav {
-        position: relative;
-        border-bottom: 1px solid #dee2e6;
-        background-color: #fff;
-    }
     #mainNav .navbar-brand,
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
         color: #212529;

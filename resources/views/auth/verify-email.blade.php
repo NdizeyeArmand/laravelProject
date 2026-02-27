@@ -40,11 +40,6 @@
 
 @push('head')
 <style>
-    #mainNav {
-        position: relative;
-        border-bottom: 1px solid #dee2e6;
-        background-color: #fff;
-    }
     #mainNav .navbar-brand,
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
         color: #212529;

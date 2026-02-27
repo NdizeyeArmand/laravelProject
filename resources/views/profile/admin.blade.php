@@ -49,42 +49,44 @@
         </div>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <h1>Admin Dashboard</h1>
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($users as $user)
+            <div class="content-surface p-4 rounded-3 mt-3">
+                <h1>Admin Dashboard</h1>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->is_admin ? 'Admin' : 'User' }}</td>
-                            <td>
-                                <form action="{{ route('admin.updateStatus') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                    <select name="is_admin" class="form-control">
-                                        <option value="1" {{ $user->is_admin ? 'selected' : '' }}>Admin</option>
-                                        <option value="0" {{ !$user->is_admin ? 'selected' : '' }}>User</option>
-                                    </select>
-                                    <button type="submit" class="btn btn-primary mt-2">Update</button>
-                                </form>
-                            </td>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->is_admin ? 'Admin' : 'User' }}</td>
+                                <td>
+                                    <form action="{{ route('admin.updateStatus') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                        <select name="is_admin" class="form-control">
+                                            <option value="1" {{ $user->is_admin ? 'selected' : '' }}>Admin</option>
+                                            <option value="0" {{ !$user->is_admin ? 'selected' : '' }}>User</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary mt-2">Update</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </main>
     </div>
 </div>
@@ -92,11 +94,6 @@
 
 @push('head')
 <style>
-    #mainNav {
-        position: relative;
-        border-bottom: 1px solid #dee2e6;
-        background-color: #fff;
-    }
     #mainNav .navbar-brand,
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
         color: #212529;
