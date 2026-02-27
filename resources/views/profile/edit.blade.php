@@ -102,9 +102,10 @@
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
         color: #212529;
     }
-    #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, 
+    #mainNav .navbar-nav > li.nav-item > a.nav-link:focus,
     #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
-    #mainNav.is-fixed .navbar-brand,
+    #mainNav.is-fixed .navbar-brand:focus,
+    #mainNav.is-fixed .navbar-brand:hover,
     #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
         color: #0085A1;
     }
@@ -114,7 +115,6 @@
     .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
         color: #0085A1 !important;
     }
-    .dark-mode .bg-light { background-color: #343a40 !important; }
     .dark-mode .text-dark { color: #f8f9fa !important; }
     body.dark-mode .sidebar {
         background-color: #343a40;

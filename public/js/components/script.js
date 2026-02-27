@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             // Scrolling Down
-            mainNav.classList.remove(['is-visible']);
+            mainNav.classList.remove('is-visible');
             if (currentTop > headerHeight && !mainNav.classList.contains('is-fixed')) {
                 mainNav.classList.add('is-fixed');
             }
@@ -56,11 +56,6 @@ function toggleTheme() {
     const isDarkMode = !document.body.classList.contains('dark-mode');
     setDarkMode(isDarkMode);
 }
-
-(function() {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDarkMode);
-})();
 
 document.addEventListener('DOMContentLoaded', function() {
     const isDarkMode = localStorage.getItem('darkMode') === 'true';

@@ -112,8 +112,8 @@ body.dark-mode .bg-image {
   background-color: white !important;
 }
 
-.dark-mode .container,
-.dark-mode .container-fluid,
+.dark-mode .container:not(#mainNav .container),
+.dark-mode .container-fluid:not(#mainNav .container-fluid),
 .dark-mode main,
 .dark-mode section,
 .dark-mode footer {
@@ -145,12 +145,20 @@ body.dark-mode .bg-image {
     border-color: #777;
 }
 
-.dark-mode input,
-.dark-mode textarea,
-.dark-mode select {
-    background-color: #555;
-    color: #fff;
-    border-color: #777;
+.dark-mode .form-control,
+.dark-mode textarea.form-control,
+.dark-mode input.form-control,
+.dark-mode select.form-control {
+    background-color: #2b3035;
+    color: #e9ecef;
+    border-color: #495057;
+}
+.dark-mode .form-control:focus,
+.dark-mode textarea.form-control:focus {
+    background-color: #2b3035; /* same, no shift */
+    color: #e9ecef;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .dark-mode .navbar-brand,
@@ -4161,6 +4169,10 @@ textarea.form-control-lg {
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+.sidebar {
+    min-height: 100vh;
+}
+
 .card {
   --bs-card-spacer-y: 1rem;
   --bs-card-spacer-x: 1rem;
@@ -5121,6 +5133,18 @@ textarea.form-control-lg {
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
+}
+
+.dark-mode .modal {
+    --bs-modal-bg: #343a40;
+    --bs-modal-color: #fff;
+    --bs-modal-border-color: #495057;
+    --bs-modal-header-border-color: #495057;
+    --bs-modal-footer-border-color: #495057;
+}
+
+.dark-mode .btn-close {
+    filter: invert(1);
 }
 
 .modal-dialog {
@@ -10720,19 +10744,19 @@ blockquote {
     color: #fff;
   }
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: #0085A1;
   }
   .dark-mode #mainNav .navbar-brand:focus, .dark-mode #mainNav .navbar-brand:hover {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: #0085A1 !important;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link {
     color: #fff;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: #0085A1;
   }
   .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: #0085A1;
   }
 }
 
@@ -10778,8 +10802,7 @@ blockquote {
     background-color: rgba(68, 68, 68, 0.9) !important;
     border-bottom: 1px solid #444;
   }
-  .dark-mode #mainNav,
-  .dark-mode #mainNav *:not(.btn.btn-outline-secondary) {
+  .dark-mode #mainNav  {
     background-color: transparent !important;
   }
   .dark-mode header.masthead,
@@ -10793,7 +10816,7 @@ blockquote {
   #mainNav .navbar-nav > li.nav-item > a.nav-link {
       color: #212529;
   }
-  #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, 
+  #mainNav .navbar-nav > li.nav-item > a.nav-link:focus,
   #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
   #mainNav.is-fixed .navbar-brand,
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
@@ -10805,6 +10828,29 @@ blockquote {
   .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, .dark-mode #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
       color: #0085A1 !important;
   }
+}
+
+/* Default state on non-hero pages (auth, dashboard, etc.)
+   Override the media query that forces white text */
+body.exception-page #mainNav .navbar-brand,
+body.exception-page #mainNav .navbar-nav > li.nav-item > a.nav-link {
+    color: #212529;
+}
+.dark-mode body.exception-page #mainNav .navbar-brand,
+.dark-mode body.exception-page #mainNav .navbar-nav > li.nav-item > a.nav-link {
+    color: #fff;
+}
+
+/* Teal hover — all pages, all states, light + dark */
+#mainNav .navbar-brand:hover,
+#mainNav .navbar-brand:focus,
+#mainNav.is-fixed .navbar-brand:hover,
+#mainNav.is-fixed .navbar-brand:focus,
+#mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
+#mainNav .navbar-nav > li.nav-item > a.nav-link:focus,
+#mainNav.is-fixed .navbar-nav > li.nav-item > a:hover,
+#mainNav.is-fixed .navbar-nav > li.nav-item > a:focus {
+    color: #0085A1 !important;
 }
 
 footer {

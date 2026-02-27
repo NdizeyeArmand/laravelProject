@@ -49,9 +49,10 @@
     #mainNav .navbar-nav > li.nav-item > a.nav-link {
         color: #212529;
     }
-    #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, 
+    #mainNav .navbar-nav > li.nav-item > a.nav-link:focus,
     #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
-    #mainNav.is-fixed .navbar-brand,
+    #mainNav.is-fixed .navbar-brand:focus,
+    #mainNav.is-fixed .navbar-brand:hover,
     #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
         color: #0085A1;
     }
