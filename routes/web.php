@@ -21,7 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/user/avatar', [UserAvatarController::class, 'update'])->name('user-avatar.update');
-    Route::get('/user/{username}', [ProfileController::class, 'showPublicProfile'])->name('profile.show');
 
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
@@ -60,5 +59,7 @@ Route::get('/main/search', [PostController::class, 'search'])->name('main.search
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');
 Route::get('/tags/{slug}', [PostController::class, 'postsByTag'])->name('posts.by.tag');
+
+Route::get('/user/{username}', [ProfileController::class, 'showPublicProfile'])->name('profile.show');
 
 require __DIR__.'/auth.php';
