@@ -27,7 +27,7 @@ class FaqItemSeeder extends Seeder
             [
                 'category_id' => 2,
                 'question' => 'What technologies were used to create this website?',
-                'answer' => 'This website was created using Laravel, a PHP framework, along with HTML, Tailwind CSS, and JavaScript. The design is based on the <a href="https://startbootstrap.com/theme/clean-blog">Clean Blog</a> theme from Start Bootstrap.',
+                'answer' => 'This website was created using Laravel, a PHP framework, along with HTML, CSS, and JavaScript. The design is based on the <a href="https://startbootstrap.com/theme/clean-blog">Clean Blog</a> theme from Start Bootstrap.',
             ],
             [
                 'category_id' => 3,
