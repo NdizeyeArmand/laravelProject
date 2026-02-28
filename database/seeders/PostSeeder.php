@@ -19,7 +19,7 @@ class PostSeeder extends Seeder
             <p>In the realm of personal knowledge management, <a href=\"https://obsidian.md\">Obsidian</a> has emerged as a powerful tool for organizing thoughts and ideas. This beginner's guide will introduce you to Obsidian's key features and help you get started on your journey to more effective note-taking.</p>
 
             <h2 class=\"section-heading\">What is Obsidian?</h2>
-            
+
             <p>Obsidian is a markdown-based note-taking application that uses the zettelkasten method. It's designed to help you create an interconnected web of knowledge, emphasizing connections between ideas rather than mere collection of information.</p>
 
             <h2 class=\"section-heading\">Key Features of Obsidian</h2>
@@ -93,7 +93,7 @@ class PostSeeder extends Seeder
             <p>Obsidian, the powerful note-taking and knowledge management app, becomes even more versatile with its extensive plugin ecosystem. As we move through 2024, certain plugins have emerged as essential tools for maximizing productivity and enhancing the Obsidian experience. Here's our curated list of must-have Obsidian plugins for 2024.</p>
 
             <h2 class=\"section-heading\">1. Dataview</h2>
-            
+
             <p>Dataview remains a cornerstone plugin for Obsidian power users. It allows you to query and display data from your notes, creating dynamic views and automated summaries. Whether you're managing a project, tracking habits, or organizing research, Dataview turns your static notes into a powerful database.</p>
 
             <h2 class=\"section-heading\">2. Kanban</h2>
@@ -146,7 +146,7 @@ class PostSeeder extends Seeder
             <p>In the world of note-taking and personal knowledge management, Obsidian has emerged as a powerful tool for organizing thoughts and ideas. While the core app is free and feature-rich, there's one paid feature that stands out: Obsidian Sync. If you're an Obsidian user or considering diving into the app, here's why you should seriously consider trying Obsidian Sync.</p>
 
             <h2 class=\"section-heading\">Seamless Cross-Device Synchronization</h2>
-            
+
             <p>One of the primary benefits of Obsidian Sync is its ability to keep your notes synchronized across multiple devices effortlessly. Whether you're working on your desktop, laptop, tablet, or smartphone, your notes are always up-to-date. This seamless integration ensures that you have access to your latest thoughts and ideas, regardless of where you are or which device you're using.</p>
 
             <h2 class=\"section-heading\">Enhanced Security and Privacy</h2>
@@ -207,7 +207,7 @@ class PostSeeder extends Seeder
             <p>In a world filled with distractions and information overload, note-taking provides us with a sense of focus and clarity. It allows us to filter out the noise and concentrate on what truly matters. By capturing and organizing our thoughts, we can navigate the complexities of life with intention and purpose.</p>
 
             <h2 class=\"section-heading\">The Final Frontier</h2>
-            
+
             <p>There can be no thought of finishing for 'aiming for the stars.' Both figuratively and literally, note-taking is a lifelong practice. It is a journey that spans generations, with each new note building upon the previous ones. No matter how much progress we make, there is always the thrill of discovering new insights and expanding our knowledge.</p>
 
             <blockquote class=\"blockquote\">The dreams of yesterday are the hopes of today and the reality of tomorrow. Note-taking allows us to capture our dreams and transform them into actionable plans. It bridges the gap between imagination and reality, turning aspirations into achievements.</blockquote>
@@ -245,9 +245,9 @@ class PostSeeder extends Seeder
             $post4->tags()->attach($tag);
         };
 
-        Post::factory(27)->create()->each(function ($post) {
-            $randomTags = Tag::inRandomOrder()->take(rand(1, 5))->get();
-            $post->tags()->attach($randomTags);
-        });
+        // Post::factory(27)->create()->each(function ($post) {
+        //     $randomTags = Tag::inRandomOrder()->take(rand(1, 5))->get();
+        //     $post->tags()->attach($randomTags);
+        // });
     }
 }
