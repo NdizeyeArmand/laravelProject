@@ -30,6 +30,8 @@ composer.phar
 *.swp
 *~
 
+*.nu
+
 /.fleet
 /.idea
 /.vscode
