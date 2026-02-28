@@ -53,7 +53,10 @@
             <div class="dashboard-hero p-4 mb-4 rounded-3">
                 <div class="py-4">
                     <h1 class="display-5 fw-bold">{{ __('Welcome to your dashboard, ') . auth()->user()->name }}</h1>
-                    <p class="col-md-8 fs-5 mb-0 text-muted">{{ __('What would you like to do today?') }}</p>
+                    <p class="col-md-8 fs-5 mb-2 text-muted">{{ __('What would you like to do today?') }}</p>
+                    <a href="{{ route('profile.show', auth()->user()->username) }}" class="btn btn-outline-secondary btn-sm">
+                        <i class="bi bi-person me-1"></i>{{ __('View my public profile') }}
+                    </a>
                 </div>
             </div>
 

@@ -161,6 +161,21 @@ body.dark-mode .bg-image {
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
+.dark-mode .form-check-input {
+    background-color: #2b3035;
+    border-color: #495057;
+}
+
+.dark-mode .form-check-input:checked {
+    background-color: #0085A1;
+    border-color: #0085A1;
+}
+
+.dark-mode .form-check-input:focus {
+    border-color: #0085A1;
+    box-shadow: 0 0 0 0.25rem rgba(0, 133, 161, 0.25);
+}
+
 .dark-mode .navbar-brand,
 .dark-mode .navbar-nav .nav-link {
   color: #fff !important;
