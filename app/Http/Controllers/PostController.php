@@ -110,7 +110,7 @@ class PostController extends Controller
     public function random()
     {
         $post = Post::inRandomOrder()->first();
-        
+
         if ($post) {
             return redirect()->route('posts.show', $post->slug);
         } else {
@@ -171,7 +171,8 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $tags = Tag::all();
+        return view('posts.edit', compact('post', 'tags'));
     }
 
     public function update(Request $request, Post $post)
@@ -207,6 +208,8 @@ class PostController extends Controller
         }
 
         $post->save();
+
+        $post->tags()->sync($request->input('tags', []));
 
         return redirect()->route('posts.show', $post->slug)->with('success', 'Post updated successfully.');
     }
