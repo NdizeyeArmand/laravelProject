@@ -32,7 +32,7 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('main') }}" method="GET">
+                <form action="{{ route('main.search') }}" method="GET">
                     <div class="row g-3">
                         <div class="col-md-5">
                             <input type="text" name="q" id="q" class="form-control" placeholder="{{ __('Search posts...') }}" value="{{ request('q') }}">

@@ -26,11 +26,17 @@ class PostController extends Controller
 
         if ($request->has('q')) {
             $searchTerm = $request->q;
-            $query->where(function($q) use ($searchTerm) {
-                $q->where('title', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('subheading', 'LIKE', "%{$searchTerm}%")
-                ->orWhereRaw("MATCH(title, subheading) AGAINST(? IN BOOLEAN MODE)", [$searchTerm]);
-            });
+            if (config('database.default') === 'mysql') {
+                $query->whereRaw(
+                    "MATCH(title, subheading) AGAINST(? IN BOOLEAN MODE)",
+                    [$searchTerm]
+                );
+            } else {
+                $query->where(function($q) use ($searchTerm) {
+                    $q->where('title', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('subheading', 'LIKE', "%{$searchTerm}%");
+                });
+            }
         }
 
         if ($request->has('sort')) {
@@ -59,11 +65,18 @@ class PostController extends Controller
 
         if ($request->has('q')) {
             $searchTerm = $request->q;
-            $query->where(function($q) use ($searchTerm) {
-                $q->where('title', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('subheading', 'LIKE', "%{$searchTerm}%")
-                ->orWhereRaw("MATCH(title, subheading) AGAINST(? IN BOOLEAN MODE)", [$searchTerm]);
-            });
+            if (config('database.default') === 'mysql') {
+                $query->whereRaw(
+                    "MATCH(title, subheading, content) AGAINST(? IN BOOLEAN MODE)",
+                    [$searchTerm]
+                );
+            } else {
+                $query->where(function($q) use ($searchTerm) {
+                    $q->where('title', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('subheading', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('content', 'LIKE', "%{$searchTerm}%");
+                });
+            }
         }
 
         $sort = $request->input('sort', 'recent');
@@ -81,8 +94,9 @@ class PostController extends Controller
         }
 
         $posts = $query->paginate(10);
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
 
-        return view('main', compact('posts'));
+        return view('main', compact('posts', 'tags'));
     }
 
     public function postsByTag($slug)
