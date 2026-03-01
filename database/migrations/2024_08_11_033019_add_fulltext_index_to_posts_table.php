@@ -13,7 +13,6 @@ return new class extends Migration
     {
         if (config('database.default') === 'mysql') {
             Schema::table('posts', function (Blueprint $table) {
-                $table->dropFullText(['title', 'subheading']);
                 $table->fullText(['title', 'subheading', 'content']);
             });
         }
@@ -27,7 +26,6 @@ return new class extends Migration
         if (config('database.default') === 'mysql') {
             Schema::table('posts', function (Blueprint $table) {
                 $table->dropFullText(['title', 'subheading', 'content']);
-                $table->fullText(['title', 'subheading']);
             });
         }
     }
