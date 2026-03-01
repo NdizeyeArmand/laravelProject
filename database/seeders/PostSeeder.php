@@ -124,7 +124,7 @@ class PostSeeder extends Seeder
             <p>In conclusion, these plugins represent just a fraction of what's available in the Obsidian community. Each adds unique functionality that can significantly enhance your note-taking and knowledge management processes. Remember to check the official Obsidian community plugin page for the most up-to-date versions and installation instructions. As Obsidian continues to evolve, so too does its plugin ecosystem, constantly offering new ways to customize and improve your personal knowledge management system.</p>
         ";
 
-        $publishedAt2 = now()->subDays(0)->format('Y-m-d');
+        $publishedAt2 = now()->subDays(720)->format('Y-m-d');
 
         $post2 = Post::create([
             'user_id' => User::factory()->create()->id,
@@ -177,7 +177,7 @@ class PostSeeder extends Seeder
             <p>In conclusion, while Obsidian is a fantastic tool on its own, Obsidian Sync elevates the experience to new heights. The peace of mind, convenience, and additional features it provides make it a worthwhile investment for anyone serious about their note-taking and personal knowledge management. Give Obsidian Sync a try, and you might find that it transforms the way you capture, organize, and access your ideas across all aspects of your life.</p>
         ";
 
-        $publishedAt3 = now()->subDays(0)->format('Y-m-d');
+        $publishedAt3 = now()->subDays(720)->format('Y-m-d');
 
         $post3 = Post::create([
             'user_id' => User::factory()->create()->id,
@@ -227,7 +227,7 @@ class PostSeeder extends Seeder
             <p>As I stand here, surrounded by the wonders of the unknown, I realize that note-taking is the key to unlocking the secrets of the universe. It is through this practice of capturing and reflecting that we can truly explore the depths of our own potential and the mysteries of the world around us.</p>
         ";
 
-        $publishedAt4 = now()->subDays(1)->format('Y-m-d');
+        $publishedAt4 = now()->subDays(721)->format('Y-m-d');
 
         $post4 = Post::create([
             'user_id' => User::factory()->create()->id,
