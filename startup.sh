@@ -5,24 +5,31 @@ echo "=== Azure Startup Script ==="
 
 cd /home/site/wwwroot
 
-# Fix document root — point Apache at Laravel's public/ folder
-cat > /etc/apache2/sites-available/000-default.conf << 'APACHECONF'
-<VirtualHost *:80>
-    DocumentRoot /home/site/wwwroot/public
+# Fix document root — point nginx at Laravel's public/ folder
+cat > /etc/nginx/sites-available/default << 'NGINXCONF'
+server {
+    listen 8080;
+    root /home/site/wwwroot/public;
+    index index.php index.html;
 
-    <Directory /home/site/wwwroot/public>
-        AllowOverride All
-        Options -Indexes +FollowSymLinks
-        Require all granted
-    </Directory>
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-APACHECONF
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
 
-# Enable mod_rewrite (needed for Laravel routing)
-a2enmod rewrite
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}
+NGINXCONF
+
+echo "=== Nginx config written ==="
 
 # Run Laravel setup
 php artisan config:clear
@@ -31,7 +38,4 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-echo "=== Startup complete, handing off to Apache ==="
-
-# Start Apache as the main process
-apache2-foreground
+echo "=== Startup complete ==="
