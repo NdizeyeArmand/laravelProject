@@ -4,7 +4,7 @@
 
 Web application made with PHP Laravel (PHP 8.4). It showcases basic features.
 
-Can be accessed **[here](https://explore-obsidian.up.railway.app)**
+Can be accessed **[here](https://explore-obsidian.azurewebsites.net)**
 
 ## Future development plan ##
 - Implementing likes and comments
